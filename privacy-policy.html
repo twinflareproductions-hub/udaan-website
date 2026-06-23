@@ -1144,9 +1144,19 @@
       display: grid;
       align-items: end;
       overflow: hidden;
-      background: linear-gradient(rgba(6, 27, 61, .72), rgba(6, 27, 61, .9)), url("assets/academy-building.jpeg") center/cover;
+      background: linear-gradient(rgba(6, 27, 61, .72), rgba(6, 27, 61, .9)), url("assets/policy-hero-bg.png") center/cover;
       color: var(--white);
       padding: 118px 0 74px;
+    }
+    .internal-hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: url("assets/udaan-logo-mark.jpeg") center/480px no-repeat;
+      opacity: .08;
+      mix-blend-mode: screen;
+      z-index: 1;
+      pointer-events: none;
     }
     .internal-hero .wrap { position: relative; z-index: 2; }
     .internal-hero h1 {
@@ -1262,7 +1272,11 @@
       .floating-card { left: 14px; right: 14px; bottom: 12px; max-width: none; }
       .feature-row { margin-top: 0; }
       .feature-row, .benefit-grid, .stats, .programme, .check-list, .parents-grid, .method-flow, .outcome-list { grid-template-columns: 1fr; }
-      .number-card { grid-template-columns: 1fr; }
+      .number-card { grid-template-columns: 1fr; text-align: center; }
+      .number-card .num { margin: 0 auto 14px; }
+      .quick-actions { right: 12px; bottom: 16px; gap: 10px; }
+      .quick-action { width: 46px; height: 46px; border-width: 2px; }
+      .quick-action svg { width: 22px; height: 22px; }
       .founder-card { padding: 18px; }
       .founder-photo { min-height: 360px; }
       .location-map,

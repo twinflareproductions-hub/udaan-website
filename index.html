@@ -296,6 +296,9 @@
       font-size: 22px;
       line-height: 1.2;
     }
+    #abacus h3 {
+      margin-top: 28px;
+    }
     .hero-copy {
       max-width: 780px;
       color: #e7efff;
@@ -953,6 +956,12 @@
       position: relative;
       overflow: hidden;
     }
+    .founder-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
     .quote {
       margin-top: 20px;
       padding: 20px;
@@ -1439,10 +1448,11 @@
       .benefit-grid {
         display: none;
       }
-      /* Outcome benefit cards: single column so they flow 1-5 in DOM order */
+      /* Golden outcome benefit cards: hidden on mobile — removes clutter below Step 1–5.
+         margin-top: 0 ensures no gap is left behind where the cards would have sat. */
       .outcome-list {
-        grid-template-columns: 1fr;
-        gap: 10px;
+        display: none;
+        margin-top: 0;
       }
       /* Benefit flip-cards: keep 2-col down to 480px */
       .benefit-grid {
@@ -1724,8 +1734,11 @@
         padding: 16px 20px 0;
       }
       .nav-mobile-panel .nav-mobile-cta .button {
+        display: inline-flex;
         width: 100%;
         justify-content: center;
+        padding: 0 22px;
+        border-bottom: none;
       }
     }
 

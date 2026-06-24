@@ -1144,7 +1144,7 @@
       display: grid;
       align-items: end;
       overflow: hidden;
-      background: linear-gradient(rgba(6, 27, 61, .72), rgba(6, 27, 61, .9)), url("assets/academy-building.jpeg") center/cover;
+      background: linear-gradient(rgba(6, 27, 61, .72), rgba(6, 27, 61, .9)), url("assets/academy-building-new.jpeg") center/cover;
       color: var(--white);
       padding: 118px 0 74px;
     }
@@ -1250,6 +1250,10 @@
     }
 
     @media (max-width: 640px) {
+      /* ── Internal hero ── */
+      .internal-hero { padding: 80px 0 48px; min-height: auto; }
+      .internal-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+
       .topbar { display: none; }
       .nav { min-height: 40px; }
       .logo img { width: 90px; }

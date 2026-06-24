@@ -1244,41 +1244,220 @@
     }
 
     @media (max-width: 640px) {
+      /* ── Layout & spacing ── */
       .topbar { display: none; }
-      .nav { min-height: 40px; }
-      .logo img { width: 90px; }
-      .nav .button { display: none; }
-      section { padding: 68px 0; }
-      .hero-inner { padding-top: 46px; }
-      .hero-actions .button, .cta-actions .button { width: 100%; }
-      .cta-actions { grid-template-columns: 1fr; }
-      .hero-media { min-height: 430px; }
-      .floating-card { left: 14px; right: 14px; bottom: 12px; max-width: none; }
-      .feature-row { margin-top: 0; }
-      .feature-row, .benefit-grid, .stats, .programme, .check-list, .parents-grid, .method-flow, .outcome-list { grid-template-columns: 1fr; }
+      .topbar-inner, .nav, .wrap, .hero-inner {
+        width: calc(100% - 32px);
+      }
+      section { padding: 48px 0; }
+
+      /* ── Navigation ── */
+      .nav { min-height: 52px; }
+      .logo { min-width: 0; }
+      .logo img { width: 100px; }
+      .nav-links { display: none; }
+      .nav .button {
+        min-height: 38px;
+        padding: 0 14px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      /* ── Internal hero ── */
+      .internal-hero { padding: 80px 0 48px; min-height: auto; }
+      .internal-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+
+      /* ── Split layout ── */
+      .split { gap: 28px; }
+
+      /* ── Image-first ordering on mobile ─────────────────────────────────────
+         about.html has two sections where the image comes second in the DOM
+         (#serve and #franchise). On mobile we push the image-frame to the
+         top with order: -1 so every split section reads: image → text.
+         Sections already image-first in the DOM (#about-udaan, #careers)
+         are untouched.
+      ──────────────────────────────────────────────────────────────────────────── */
+
+      /* "Child-Centred Learning" (DOM: text first, image second) */
+      #serve .image-frame { order: -1; }
+
+      /* "Start a Udaan Abacus Learning Centre" (DOM: text first, image second) */
+      #franchise .image-frame { order: -1; }
+
+      /* ── Grids → single column ── */
+      .benefit-grid,
+      .stats,
+      .programme,
+      .check-list,
+      .parents-grid,
+      .method-flow,
+      .outcome-list { grid-template-columns: 1fr; }
+
+      /* ── Feature row ── */
+      .feature-row { margin-top: 0; grid-template-columns: 1fr; gap: 14px; }
+      .feature-tile { min-height: auto; padding: 22px; }
+
+      /* ── Numbered steps ── */
       .number-card { grid-template-columns: 1fr; text-align: center; }
       .number-card .num { margin: 0 auto 14px; }
-      .quick-actions { right: 12px; bottom: 16px; gap: 10px; }
-      .quick-action { width: 46px; height: 46px; border-width: 2px; }
-      .quick-action svg { width: 22px; height: 22px; }
-      .founder-card { padding: 18px; }
-      .founder-photo { min-height: 360px; }
-      .location-map,
-      .location-map iframe { min-height: 320px; }
-      .location-qr { padding: 20px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 26px; }
-      .footer-contact { grid-column: auto; }
-      .footer-tagline { max-width: none; }
 
+      /* ── Faculty badge card ── */
       .faculty-badge-card {
         grid-template-columns: 1fr;
         text-align: center;
         justify-items: center;
         padding: 18px;
+        gap: 16px;
       }
-      .faculty-badge-card img { width: min(220px, 100%); }
-      .trust-strip-inner { grid-template-columns: 1fr; }
-      .trust-strip-badge { grid-column: auto; max-width: 210px; }
+      .faculty-badge-card img { width: min(180px, 100%); }
+
+      /* ── Trust strip ── */
+      .trust-strip { padding: 28px 0; }
+      .trust-strip-inner { grid-template-columns: 1fr; gap: 10px; }
+      .trust-strip-badge { grid-column: auto; max-width: 180px; }
+      .trust-item { min-height: 72px; padding: 14px; font-size: 14px; }
+
+      /* ── Founder ── */
+      .founder-card { padding: 16px; gap: 20px; }
+      .founder-photo { min-height: 280px; }
+
+      /* ── Difference grid ── */
+      .difference-card { padding: 20px; }
+
+      /* ── Info grid ── */
+      .info-grid { grid-template-columns: 1fr; }
+      .info-box { padding: 18px; }
+
+      /* ── Location ── */
+      .location-map,
+      .location-map iframe { min-height: 260px; }
+      .location-qr { padding: 18px; gap: 12px; }
+
+      /* ── CTA ── */
+      .cta-actions { grid-template-columns: 1fr; gap: 10px; }
+      .cta-actions .button { width: 100%; }
+
+      /* ── Footer ── */
+      footer { padding: 40px 0 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+      .footer-contact { grid-column: auto; }
+      .footer-tagline { max-width: none; }
+      footer img { width: 130px; }
+      footer h3 { font-size: 16px; }
+
+      /* ── Floating action buttons ── */
+      .quick-actions { right: 12px; bottom: 16px; gap: 10px; }
+      .quick-action { width: 48px; height: 48px; border-width: 2px; }
+      .quick-action svg { width: 22px; height: 22px; }
+      .quick-action::before { display: none; }
+
+      /* ── Typography ── */
+      h2 { font-size: clamp(24px, 6vw, 36px); }
+      h3 { font-size: 18px; }
+      .lead { font-size: 15px; }
+      .section-head { margin-bottom: 28px; }
+    }
+
+    /* ── Extra small phones (≤ 380px) ── */
+    @media (max-width: 380px) {
+      .topbar-inner, .nav, .wrap, .hero-inner {
+        width: calc(100% - 24px);
+      }
+      .nav .button { display: none; }
+    }
+
+    /* ════════════════════════════════════════════════════════════════════════
+       MOBILE NAVIGATION  —  ≤ 980px
+       Only adds the hamburger + drawer. Desktop nav is completely untouched.
+       ════════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      /* Hamburger button */
+      .nav-hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 5px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        background: none;
+        border: none;
+        cursor: pointer;
+        flex-shrink: 0;
+        border-radius: var(--radius);
+        transition: background .18s ease;
+        /* Sits to the RIGHT of the logo, before the (hidden) desktop links */
+        margin-left: auto;
+      }
+      .nav-hamburger:hover { background: rgba(6,27,61,.07); }
+      .nav-hamburger span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: var(--navy);
+        border-radius: 99px;
+        transition: transform .28s ease, opacity .2s ease, width .2s ease;
+        transform-origin: center;
+      }
+      /* Animate to X when open */
+      .nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      .nav-open .nav-hamburger span:nth-child(2) { opacity: 0; width: 0; }
+      .nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      /* Mobile drawer panel */
+      .nav-mobile-panel {
+        position: absolute;
+        top: 100%;          /* flush below the sticky header */
+        left: 0;
+        right: 0;
+        background: rgba(255,255,255,.98);
+        backdrop-filter: blur(18px);
+        border-bottom: 1px solid var(--line);
+        box-shadow: 0 18px 48px rgba(6,27,61,.14);
+        padding: 0 0 22px;
+        /* Hidden state */
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: opacity .24s ease, transform .24s ease;
+        z-index: 99;
+      }
+      /* Open state */
+      .nav-open .nav-mobile-panel {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+      }
+
+      /* Links inside the drawer */
+      .nav-mobile-panel a {
+        display: block;
+        padding: 13px 20px;
+        font-size: 15px;
+        font-weight: 800;
+        color: #263a5c;
+        border-bottom: 1px solid var(--line);
+        transition: background .16s ease, color .16s ease;
+      }
+      .nav-mobile-panel a:hover {
+        background: var(--light);
+        color: var(--navy);
+      }
+      /* "Book FREE Demo" button row */
+      .nav-mobile-panel .nav-mobile-cta {
+        padding: 16px 20px 0;
+      }
+      .nav-mobile-panel .nav-mobile-cta .button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* On desktop the panel and hamburger must never appear */
+    @media (min-width: 981px) {
+      .nav-hamburger { display: none; }
+      .nav-mobile-panel { display: none; }
     }
   </style>
 </head>
@@ -1295,12 +1474,25 @@
       <a class="logo" href="index.html#home" aria-label="Udaan Abacus Academy">
         <img src="assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy logo">
       </a>
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-panel">
+        <span></span><span></span><span></span>
+      </button>
       <div class="nav-links">
         <a href="index.html#home">Home</a>
         <a href="about.html">About Us</a>
         <a href="index.html#course">Course</a>
         <a href="about.html#franchise">Franchise</a>
         <a href="index.html#contact">Contact Us</a>
+      </div>
+      <div class="nav-mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+        <a href="index.html#home" class="nav-mobile-link">Home</a>
+        <a href="about.html" class="nav-mobile-link">About Us</a>
+        <a href="index.html#course" class="nav-mobile-link">Course</a>
+        <a href="about.html#franchise" class="nav-mobile-link">Franchise</a>
+        <a href="index.html#contact" class="nav-mobile-link">Contact Us</a>
+        <div class="nav-mobile-cta">
+          <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
+        </div>
       </div>
       <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
     </nav>
@@ -1533,6 +1725,49 @@
       });
     }, { threshold: 0.45 });
     counters.forEach((counter) => counterObserver.observe(counter));
+
+    // ── Mobile navigation ────────────────────────────────────────────────────
+    (function () {
+      const header   = document.querySelector('.site-header');
+      const hamburger = document.querySelector('.nav-hamburger');
+      if (!header || !hamburger) return;
+
+      function openMenu() {
+        header.classList.add('nav-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Close navigation menu');
+      }
+      function closeMenu() {
+        header.classList.remove('nav-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }
+      function toggleMenu() {
+        header.classList.contains('nav-open') ? closeMenu() : openMenu();
+      }
+
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      // Close when any link inside the panel is tapped
+      document.querySelectorAll('.nav-mobile-link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      // Close on tap/click outside the header
+      document.addEventListener('click', function (e) {
+        if (header.classList.contains('nav-open') && !header.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      // Close on Escape key
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    }());
   </script>
 </body>
 </html>

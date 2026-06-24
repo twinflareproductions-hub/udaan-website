@@ -1397,10 +1397,27 @@
       }
       .hero-media { min-height: 540px; }
       .slider { inset: 0; }
-      .feature-row, .stats, .programme, .parents-grid, .method-flow, .outcome-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .feature-row, .stats, .programme, .parents-grid, .outcome-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       /* benefit-grid: drop from 4 cols to 2 cols at tablet so cards are not crushed */
       .benefit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .method-step:not(:last-child)::after { display: none; }
+      /* Method steps: single column across the full mobile range (≤980px) so
+         Step 1-5 always stack in strict DOM order, never wrap 2-up */
+      .method-flow {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      /* Connector arrow: vertical/downward across the full mobile range */
+      .method-step:not(:last-child)::after {
+        display: grid;
+        content: "\2193";
+        position: static;
+        width: 30px;
+        height: 30px;
+        margin: 10px auto -22px;
+        transform: none;
+        right: auto;
+        top: auto;
+      }
       .split, .founder-card { grid-template-columns: 1fr; }
       .footer-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1416,23 +1433,11 @@
 
     /* ── Mobile ordering fix: Step 1-5 and outcome cards in strict top-to-bottom DOM order ── */
     @media (max-width: 768px) {
-      /* Force method steps to single column so Step 1, 2, 3, 4, 5
-         stack exactly in DOM order with no grid-wrap side-effects */
-      .method-flow {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-      /* Re-enable the connector arrow, now pointing downward for vertical flow */
-      .method-step:not(:last-child)::after {
-        display: grid;
-        content: "\2193";
-        position: static;
-        width: 30px;
-        height: 30px;
-        margin: 10px auto -22px;
-        transform: none;
-        right: auto;
-        top: auto;
+      /* Gold benefit cards: hidden on mobile only per client feedback (felt cluttered).
+         Content stays in the DOM — not deleted — just visually hidden below 768px.
+         Tablet (769-980px) and desktop are unaffected. */
+      .benefit-grid {
+        display: none;
       }
       /* Outcome benefit cards: single column so they flow 1-5 in DOM order */
       .outcome-list {

@@ -373,25 +373,15 @@
       border-radius: var(--radius);
     }
     .iso-trust img {
-      width: 58px;
-      height: 58px;
+      width: 72px;
+      height: 72px;
       flex: 0 0 auto;
-      border-radius: 50%;
-      object-fit: cover;
-      background: var(--white);
-      box-shadow: 0 0 0 3px rgba(215, 166, 61, .55), 0 8px 20px rgba(0, 0, 0, .3);
-    }
-    .iso-trust strong {
-      display: block;
-      color: var(--white);
-      font-size: 15px;
-      font-weight: 900;
-      line-height: 1.3;
+      object-fit: contain;
     }
     .iso-trust span {
       display: block;
       color: var(--gold-2);
-      font-size: 13px;
+      font-size: 15px;
       font-weight: 700;
       letter-spacing: .01em;
     }
@@ -1502,6 +1492,12 @@
 
     /* ── Mobile ordering fix: Step 1-5 and outcome cards in strict top-to-bottom DOM order ── */
     @media (max-width: 768px) {
+      /* Gold benefit cards: hidden on mobile only per client feedback (felt cluttered).
+         Content stays in the DOM — not deleted — just visually hidden below 768px.
+         Tablet (769-980px) and desktop are unaffected. */
+      .benefit-grid {
+        display: none;
+      }
       /* Golden outcome benefit cards: hidden on mobile — removes clutter below Step 1–5.
          margin-top: 0 ensures no gap is left behind where the cards would have sat. */
       .outcome-list {
@@ -1570,10 +1566,9 @@
       .hero-badges { gap: 8px; }
       .hero-badge { font-size: 13px; padding: 8px 12px; }
       .iso-trust { margin-top: 18px; padding: 8px 16px 8px 8px; gap: 12px; }
-      .iso-trust img { width: 48px; height: 48px; }
-      .iso-trust strong { font-size: 14px; }
-      .iso-trust span { font-size: 12px; }
-      .hero-media { min-height: 0; aspect-ratio: 4 / 3; }
+      .iso-trust img { width: 56px; height: 56px; }
+      .iso-trust span { font-size: 13px; }
+      .hero-media { min-height: 280px; }
       .floating-card {
         left: 10px;
         right: 10px;
@@ -1584,7 +1579,7 @@
       .floating-card strong { font-size: 18px; }
 
       /* ── Feature tiles ── */
-      .feature-row { margin-top: 48px; grid-template-columns: 1fr; gap: 14px; }
+      .feature-row { margin-top: 0; grid-template-columns: 1fr; gap: 14px; }
       .feature-tile { min-height: auto; padding: 22px; }
 
       /* ── Grids → single column ── */
@@ -1686,8 +1681,8 @@
       footer h3 { font-size: 16px; }
 
       /* ── Floating action buttons ── */
-      .quick-actions { right: 8px; bottom: 10px; gap: 8px; }
-      .quick-action { width: 40px; height: 40px; border-width: 2px; }
+      .quick-actions { right: 12px; bottom: 16px; gap: 10px; }
+      .quick-action { width: 48px; height: 48px; border-width: 2px; }
       .quick-action svg { width: 22px; height: 22px; }
       .quick-action::before { display: none; }
 
@@ -1848,7 +1843,7 @@
     <section class="hero">
       <div class="hero-inner">
         <div>
-          <p class="eyebrow">Abacus & Mental Math Programs for Kids</p>
+          <p class="eyebrow">ISO 9001:2015 Certified Academy</p>
           <h1>Udaan Abacus Academy</h1>
           <p class="hero-copy">Helping children aged 5&ndash;14 develop stronger concentration, sharper memory, faster mental calculation and the confidence to thrive&mdash;through our structured, child-centred Abacus program.</p>
           <div class="hero-actions">
@@ -1862,7 +1857,6 @@
           <div class="iso-trust">
             <img src="assets/iso-9001-2015-badge.png" alt="ISO 9001:2015 Certified Quality Management System badge">
             <div>
-              <strong>Udaan Abacus Academy</strong>
               <span>ISO 9001:2015 Certified Academy</span>
             </div>
           </div>
@@ -1946,8 +1940,8 @@
             <div class="check"><span class="tick">&check;</span>Age Group: 5-14 Years</div>
             <div class="check"><span class="tick">&check;</span>Structured Curriculum</div>
             <div class="check"><span class="tick">&check;</span>Regular Progress Tracking</div>
-            <div class="check"><span class="tick">&check;</span>Weekly Tests</div>
-            <div class="check"><span class="tick">&check;</span>Monthly Exams</div>
+            <div class="check"><span class="tick">&check;</span>ISO 9001:2015 Certified</div>
+            <div class="check"><span class="tick">&check;</span>Periodic Exams</div>
           </div>
         </div>
         <div class="image-frame reveal">
@@ -2385,7 +2379,7 @@
           </ul>
           <h3 class="footer-contact-sub">Locations</h3>
           <ul>
-            <li><strong>Head Office &ndash; New Delhi</strong><span>D26/345, Chhatarpur Pahari, New Delhi &ndash; 110074</span></li>
+            <li><strong>Head Office &ndash; New Delhi</strong><span>D26/, Chhatarpur Pahari, New Delhi &ndash; 110074</span></li>
             <li><strong>Indore Office</strong><span>917, Tower Square, Khatiwala Tank, Indore, Madhya Pradesh 452014</span></li>
           </ul>
         </div>

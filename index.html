@@ -1492,12 +1492,6 @@
 
     /* ── Mobile ordering fix: Step 1-5 and outcome cards in strict top-to-bottom DOM order ── */
     @media (max-width: 768px) {
-      /* Gold benefit cards: hidden on mobile only per client feedback (felt cluttered).
-         Content stays in the DOM — not deleted — just visually hidden below 768px.
-         Tablet (769-980px) and desktop are unaffected. */
-      .benefit-grid {
-        display: none;
-      }
       /* Golden outcome benefit cards: hidden on mobile — removes clutter below Step 1–5.
          margin-top: 0 ensures no gap is left behind where the cards would have sat. */
       .outcome-list {
@@ -1531,8 +1525,8 @@
       .topbar { display: none; }
       .topbar-inner, .nav, .wrap, .hero-inner {
         width: 100%;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 24px;
+        padding-right: 24px;
       }
       section { padding: 48px 0; }
 
@@ -1568,7 +1562,7 @@
       .iso-trust { margin-top: 18px; padding: 8px 16px 8px 8px; gap: 12px; }
       .iso-trust img { width: 56px; height: 56px; }
       .iso-trust span { font-size: 13px; }
-      .hero-media { min-height: 280px; }
+      .hero-media { min-height: 0; aspect-ratio: 1 / 1; }
       .floating-card {
         left: 10px;
         right: 10px;
@@ -1696,7 +1690,9 @@
     /* ── Extra small phones (≤ 380px) ── */
     @media (max-width: 380px) {
       .topbar-inner, .nav, .wrap, .hero-inner {
-        width: calc(100% - 24px);
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 20px;
       }
       .nav .button { display: none; }
       .stats { grid-template-columns: 1fr; }

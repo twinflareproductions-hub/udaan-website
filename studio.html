@@ -1663,6 +1663,84 @@
       .studio-hero h1 { font-size: clamp(36px, 10vw, 52px); }
       .studio-hero h1 span { margin-left: 8px; }
     }
+
+    /* ── DESKTOP NAV HIDE ── */
+    @media(min-width:981px){ .nav-hamburger{display:none !important} .nav-mobile-panel{display:none !important} }
+
+    /* ════════════════════════════════════════════════════════════════════════
+       MOBILE NAVIGATION  —  ≤ 980px
+       ════════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .nav-links{display:none !important}
+      .nav-hamburger{
+        display:flex !important;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:5px;
+        width:44px;
+        height:44px;
+        padding:0;
+        background:none;
+        border:none;
+        cursor:pointer;
+        flex-shrink:0;
+        border-radius:var(--radius);
+        transition:background .18s ease;
+        margin-left:auto;
+      }
+      .nav-hamburger:hover{ background:rgba(6,27,61,.07); }
+      .nav-hamburger span{
+        display:block;
+        width:22px;
+        height:2px;
+        background:var(--navy);
+        border-radius:99px;
+        transition:transform .28s ease, opacity .2s ease, width .2s ease;
+        transform-origin:center;
+      }
+      .nav-open .nav-hamburger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+      .nav-open .nav-hamburger span:nth-child(2){ opacity:0; width:0; }
+      .nav-open .nav-hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+      .nav-mobile-panel{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:rgba(255,255,255,.98);
+        backdrop-filter:blur(18px);
+        border-bottom:1px solid var(--line);
+        box-shadow:0 18px 48px rgba(6,27,61,.14);
+        padding:0 0 22px;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-10px);
+        transition:opacity .24s ease, transform .24s ease;
+        z-index:99;
+      }
+      .nav-open .nav-mobile-panel{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .nav-mobile-panel a.nav-mobile-link{
+        display:block;
+        padding:13px 20px;
+        font-size:15px;
+        font-weight:800;
+        color:#263a5c;
+        border-bottom:1px solid var(--line);
+        transition:background .16s ease, color .16s ease;
+      }
+      .nav-mobile-panel a.nav-mobile-link:hover{ background:var(--light); color:var(--navy); }
+      .nav-mobile-panel .nav-mobile-cta{ padding:16px 20px 0; }
+      .nav-mobile-panel .nav-mobile-cta .button{
+        display:inline-flex;
+        width:100%;
+        justify-content:center;
+        border-bottom:none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -1674,8 +1752,9 @@
   </div>
 
   <header class="site-header">
-    <nav class="nav">
-      <a class="logo" href="index.html"><img src="assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy"></a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="logo" href="index.html" aria-label="Udaan Abacus Academy"><img src="assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy"></a>
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-panel"><span></span><span></span><span></span></button>
       <div class="nav-links">
         <a href="index.html#home">Home</a>
         <a href="about.html">About Us</a>
@@ -1683,7 +1762,17 @@
         <a href="studio.html" class="active">Udaan Studio</a>
         <a href="index.html#contact">Contact Us</a>
       </div>
-      <a class="button dark" href="https://wa.me/918827773391" target="_blank">Book FREE Demo</a>
+      <div class="nav-mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+        <a href="index.html#home" class="nav-mobile-link">Home</a>
+        <a href="about.html" class="nav-mobile-link">About Us</a>
+        <a href="programs.html" class="nav-mobile-link">Our Programs</a>
+        <a href="studio.html" class="nav-mobile-link">Udaan Studio</a>
+        <a href="index.html#contact" class="nav-mobile-link">Contact Us</a>
+        <div class="nav-mobile-cta">
+          <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
+        </div>
+      </div>
+      <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
     </nav>
   </header>
 
@@ -1801,6 +1890,46 @@
         document.getElementById('notifyName').value = '';
       }
     }
+
+    // ── Mobile navigation ────────────────────────────────────────────────────
+    (function () {
+      const header   = document.querySelector('.site-header');
+      const hamburger = document.querySelector('.nav-hamburger');
+      if (!header || !hamburger) return;
+
+      function openMenu() {
+        header.classList.add('nav-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Close navigation menu');
+      }
+      function closeMenu() {
+        header.classList.remove('nav-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }
+      function toggleMenu() {
+        header.classList.contains('nav-open') ? closeMenu() : openMenu();
+      }
+
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.querySelectorAll('.nav-mobile-link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (header.classList.contains('nav-open') && !header.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    }());
   </script>
 </body>
 </html>

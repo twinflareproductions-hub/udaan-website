@@ -16,6 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
   <style>
     :root { --navy:#061b3d; --navy-2:#092b5f; --blue:#123f86; --gold:#d7a63d; --gold-2:#f4c85d; --cream:#fff8e8; --light:#f5f8fc; --ink:#17243a; --muted:#607089; --white:#fff; --line:rgba(6,27,61,.12); --line-gold:rgba(215,166,61,.22); --shadow:0 24px 70px rgba(6,27,61,.16); --radius:8px; --radius-lg:18px; }
     *{box-sizing:border-box} html{scroll-behavior:smooth;overflow-x:hidden} body{overflow-x:hidden;margin:0;font-family:"Poppins",sans-serif;color:var(--ink);background:#fff;line-height:1.65}
@@ -24,30 +25,37 @@
     .site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.94);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
     .nav{min-height:60px;display:flex;align-items:center;justify-content:space-between;gap:24px} .logo{display:flex;align-items:center;gap:12px;min-width:215px} .logo img{width:120px;height:auto}
     .nav-links{display:flex;align-items:center;gap:26px;color:#263a5c;font-weight:800;font-size:14px} .nav-links a{position:relative;padding:16px 0} .nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:8px;height:3px;border-radius:99px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .22s ease} .nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
-    .nav-cta{display:flex;align-items:center;gap:12px}
-    .button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--radius);border:1px solid transparent;background:var(--gold);color:var(--navy);font-weight:900;box-shadow:0 14px 34px rgba(215,166,61,.35);cursor:pointer;transition:transform .22s ease; text-decoration:none}
+    .button{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:var(--radius);border:1px solid transparent;background:var(--gold);color:var(--navy);font-weight:900;box-shadow:0 14px 34px rgba(215,166,61,.35);cursor:pointer;transition:transform .22s ease; text-decoration:none; white-space:nowrap}
     .button:hover{transform:translateY(-3px)} .button.dark{background:var(--navy);color:var(--white);box-shadow:0 14px 34px rgba(6,27,61,.22)} .button.outline{background:transparent;color:var(--navy);border-color:var(--navy);box-shadow:none} .button.outline:hover{background:var(--navy);color:var(--white)} .button.ghost{background:transparent;color:var(--white);border-color:rgba(255,255,255,.45);box-shadow:none}
     .internal-hero{position:relative;min-height:360px;display:grid;align-items:end;overflow:hidden;background:linear-gradient(rgba(6,27,61,.72), rgba(6,27,61,.9)), url("assets/academy-building-new.jpeg") center/cover;color:var(--white);padding:118px 0 74px}
     .internal-hero .wrap{position:relative;z-index:2} .internal-hero h1{max-width:1000px;margin-bottom:16px;font-size:clamp(42px,7vw,78px);line-height:.95;color:var(--white)} .internal-hero h1 span{color:var(--white)} .internal-hero p{max-width:920px;color:#dce8ff;font-size:clamp(17px,2vw,21px);margin-bottom:0}
     .eyebrow{display:inline-flex;align-items:center;gap:10px;margin:0 0 16px;color:var(--gold-2);font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase} .eyebrow::before{content:"";width:36px;height:3px;border-radius:999px;background:currentColor}
 
     /* Partnerships */
-    .partnerships-section{background:#eef2f8;padding:56px 0 36px} .partnerships-section h2{margin-bottom:10px;font-size:clamp(26px,3.4vw,40px);line-height:1.1;color:var(--navy)} .partnerships-section h2 span{color:var(--gold)} .lead{color:var(--muted);font-size:18px;margin-bottom:0}
+    .partnerships-section{background:#eef2f8;padding:56px 0 36px; overflow:visible} .partnerships-section .wrap{overflow:visible} .partnerships-section h2{margin-bottom:10px;font-size:clamp(26px,3.4vw,40px);line-height:1.1;color:var(--navy)} .partnerships-section h2 span{color:var(--gold)} .lead{color:var(--muted);font-size:18px;margin-bottom:0}
     .tabs-wrap{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:22px}
     .partner-tab{min-height:44px;padding:0 20px;border-radius:999px;border:1px solid var(--navy);background:var(--navy);color:var(--white);font-weight:800;font-size:13px;cursor:pointer;transition:all .22s ease;display:inline-flex;align-items:center;gap:8px;box-shadow:0 4px 12px rgba(6,27,61,.15)} .partner-tab:hover{transform:translateY(-1px)} .partner-tab.active{background:var(--gold);border-color:var(--gold);color:var(--navy);box-shadow:0 10px 26px rgba(215,166,61,.36)} .partner-tab .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.6} .partner-tab.active .dot{opacity:1}
 
     .gallery-outer{position:relative;max-width:1440px;margin:0 auto;padding:0 32px}
     .gallery-viewport{overflow:hidden;position:relative;padding:20px 0 32px;touch-action:pan-y;cursor:grab} .gallery-viewport:active{cursor:grabbing}
-    .gallery-track{display:flex;gap:28px;align-items:center;will-change:transform} .gallery-track.animating{transition:transform .28s cubic-bezier(.25,.8,.25,1)}
-    .gallery-card{flex:0 0 620px;width:620px;max-width:84vw;min-height:590px;background:var(--white);border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(6,27,61,.14);border:1px solid rgba(6,27,61,.08);transition:transform .28s cubic-bezier(.25,.8,.25,1), opacity .28s ease, filter .28s ease;transform-origin:center center;user-select:none}
+    .gallery-track{display:flex;gap:28px;align-items:stretch;will-change:transform} .gallery-track.animating{transition:transform .28s cubic-bezier(.25,.8,.25,1)}
+    .gallery-card{flex:0 0 620px;width:620px;max-width:84vw;min-height:590px;background:var(--white);border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(6,27,61,.14);border:1px solid rgba(6,27,61,.08);transition:transform .28s cubic-bezier(.25,.8,.25,1), opacity .28s ease, filter .28s ease;transform-origin:center center;user-select:none; display:flex; flex-direction:column}
     .gallery-card.inactive{transform:scale(.86);opacity:.52;filter:blur(2px) brightness(.88);} .gallery-card.active{transform:scale(1);opacity:1;filter:blur(0) brightness(1);z-index:3;box-shadow:0 28px 70px rgba(6,27,61,.24)}
-    .card-top{position:relative;background:linear-gradient(135deg,#061b3d 0%, #0e2a5c 60%, #12346b 100%);padding:26px 26px 22px;color:var(--white);overflow:hidden}
+    .card-top{position:relative;background:linear-gradient(135deg,#061b3d 0%, #0e2a5c 60%, #12346b 100%);padding:26px 26px 22px;color:var(--white);overflow:hidden; flex:0 0 auto}
     .card-icon{width:48px;height:48px;border-radius:10px;display:grid;place-items:center;background:#f4c85d;border:1px solid rgba(255,255,255,.14);margin-bottom:18px;overflow:hidden}
     .card-icon img{width:28px;height:28px;object-fit:contain;display:block}
     .card-top .eyebrow{color:var(--gold-);font-size:11px;margin-bottom:10px} .card-top h3{font-size:26px;line-height:1.15;margin-bottom:10px;color:var(--white);font-weight:800} .card-top p.desc{color:#a8bee0;font-size:13.5px;line-height:1.6;margin:0;font-weight:500;max-width:520px}
-    .card-body{background:var(--white);padding:22px 22px 20px} .h-label{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:14px} .h-label::before{content:"";width:18px;height:2.5px;border-radius:99px;background:var(--gold)}
-    .check-list{display:grid;gap:10px;margin-bottom:18px} .check-item{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:700;line-height:1.45;color:var(--ink)} .check-item .tick{width:22px;height:22px;border-radius:50%;background:#f0f4fa;border:1px solid var(--line);display:grid;place-items:center;flex:0 0 auto;font-size:11px;color:var(--navy);font-weight:900;margin-top:1px}
-    .divider{border:none;border-top:1px dashed rgba(6,27,61,.12);margin:16px 0} .best-label{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7a8aa3;margin-bottom:10px;display:block} .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px} .pill{padding:6px 12px;border-radius:999px;background:#f2f6fc;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--navy)} .cta-dark{width:100%;min-height:48px;background:var(--navy);color:#fff;border-radius:10px;border:1.5px solid var(--navy);font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 12px 24px rgba(6,27,61,.18);transition:all .22s ease;text-decoration:none;position:relative;z-index:5;pointer-events:auto;} .cta-dark:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);transform:translateY(-2px);box-shadow:0 14px 28px rgba(215,166,61,.32);}
+    .card-body{background:var(--white);padding:22px 22px 20px; flex:1; display:flex; flex-direction:column} 
+    .h-label{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--navy);margin-bottom:14px} .h-label::before{content:"";width:18px;height:2.5px;border-radius:99px;background:var(--gold)}
+    .check-list{display:grid;gap:10px;margin-bottom:18px} 
+    .check-item{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;font-weight:700;line-height:1.45;color:var(--ink)} 
+    .check-item .tick{width:22px;height:22px;border-radius:50%;background:#f0f4fa;border:1px solid var(--line);display:grid;place-items:center;flex:0 0 auto;font-size:11px;color:var(--navy);font-weight:900;margin-top:1px}
+    .divider{border:none;border-top:1px dashed rgba(6,27,61,.12);margin:16px 0; flex:0 0 auto} 
+    .best-label{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#7a8aa3;margin-bottom:10px;display:block; flex:0 0 auto} 
+    .pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px; flex:0 0 auto} 
+    .pill{padding:6px 12px;border-radius:999px;background:#f2f6fc;border:1px solid var(--line);font-size:12px;font-weight:800;color:var(--navy)} 
+    .cta-dark{width:100%;min-height:48px;background:var(--navy);color:#fff;border-radius:10px;border:1.5px solid var(--navy);font-weight:800;font-size:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 12px 24px rgba(6,27,61,.18);transition:all .22s ease;text-decoration:none;position:relative;z-index:5;pointer-events:auto; margin-top:auto; flex:0 0 auto} 
+    .cta-dark:hover{background:var(--gold);color:var(--navy);border-color:var(--gold);transform:translateY(-2px);box-shadow:0 14px 28px rgba(215,166,61,.32);}
     .arrow-btn{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;border:1px solid var(--line);background:var(--white);color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:0 12px 28px rgba(6,27,61,.14);z-index:10;transition:all .22s ease;font-size:22px;font-weight:900;line-height:1} .arrow-btn:hover{background:var(--navy);color:var(--white);border-color:var(--navy);transform:translateY(-50%) scale(1.06)} .arrow-btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)} .arrow-left{left:8px} .arrow-right{right:8px}
     .dots{display:flex;justify-content:center;gap:10px;margin-top:12px} .dots .dot{width:8px;height:8px;border-radius:50%;background:rgba(6,27,61,.18);border:none;cursor:pointer;transition:all .22s ease;padding:0;box-shadow:none} .dots .dot.active{background:var(--navy);width:22px;border-radius:999px}
 
@@ -58,12 +66,162 @@
     footer{background:#04132b;color:#d9e5f7;padding:54px 0 24px} .footer-grid{display:grid;grid-template-columns:minmax(170px,.95fr) minmax(120px,.75fr) minmax(170px,.95fr) minmax(260px,1.45fr) minmax(120px,.75fr);gap:34px;margin-bottom:30px;align-items:start} footer img{width:160px;background:var(--white);border-radius:var(--radius);padding:8px;margin-bottom:18px} footer h3{color:var(--gold-2);margin-bottom:12px} footer p,footer li{color:#c9d8ec} footer ul{padding-left:18px;margin:0} footer li{margin-bottom:7px;line-height:1.5} .footer-tagline{max-width:210px;color:#dce8ff;font-weight:700} .footer-contact ul{padding-left:0;list-style:none} .footer-contact li{margin-bottom:10px} .footer-contact strong{display:block;color:#eef4ff;font-size:13px} .copyright{padding-top:22px;border-top:1px solid rgba(255,255,255,.12);color:#aebbd0;font-size:14px;text-align:center}
     .quick-actions{position:fixed;right:22px;bottom:24px;z-index:120;display:grid;gap:12px} .quick-action{position:relative;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;color:var(--white);box-shadow:0 16px 38px rgba(6,27,61,.28);border:3px solid rgba(255,255,255,.88);transition:transform .2s ease} .quick-action svg{width:28px;height:28px;fill:currentColor} .quick-action.whatsapp{background:#25d366} .quick-action.call{background:var(--gold);color:var(--navy)}
     .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.2,1);transition-delay:var(--delay,0ms)} .reveal.visible{opacity:1;transform:translateY(0)}
-    @media(max-width:980px){ .nav-links{display:none} .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 34px} .footer-contact{grid-column:span 2} .why-grid{grid-template-columns:repeat(2,minmax(0,1fr))} .gallery-outer{padding:0 24px} .gallery-card{flex:0 0 560px;width:560px} .nav-hamburger{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;background:none;border:none;cursor:pointer;margin-left:auto} .nav-hamburger span{display:block;width:20px;height:2px;background:var(--navy);border-radius:99px;transition:transform .26s ease,opacity .2s ease} .nav-open .nav-hamburger span:nth-child(1){transform:translateY(6px) rotate(45deg)} .nav-open .nav-hamburger span:nth-child(2){opacity:0;width:0} .nav-open .nav-hamburger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)} .nav-mobile-panel{position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.98);border-bottom:1px solid var(--line);box-shadow:0 16px 40px rgba(6,27,61,.12);padding:0 0 18px;opacity:0;pointer-events:none;transform:translateY(-10px);transition:opacity .22s ease,transform .22s ease;z-index:99} .nav-open .nav-mobile-panel{opacity:1;pointer-events:auto;transform:translateY(0)} .nav-mobile-panel a{display:block;padding:12px 18px;font-size:14px;font-weight:800;color:#263a5c;border-bottom:1px solid var(--line)} .nav-mobile-panel .nav-mobile-cta{padding:14px 18px 0;display:grid;gap:10px} .nav-mobile-panel .nav-mobile-cta .button{width:100%} .topbar-inner{padding:8px 0} }
-    @media(max-width:640px){ .internal-hero{padding:80px 0 48px;min-height:auto} .internal-hero h1{font-size:clamp(30px,8vw,48px)} .topbar{display:none} .nav{min-height:55px} .logo img{width:90px} .topbar-inner,.nav,.wrap{width:100%;padding-left:28px;padding-right:28px} .partnerships-section,.why-section{padding:56px 0} .gallery-outer{padding:0 8px} .gallery-card{flex:0 0 88vw;width:88vw;min-height:520px} .arrow-btn{width:38px;height:38px;font-size:18px} .arrow-left{left:2px} .arrow-right{right:2px} .tabs-wrap{gap:8px} .partner-tab{font-size:12px;padding:0 14px;min-height:40px} .why-grid{grid-template-columns:1fr 1fr;gap:10px} .why-card{padding:16px 14px} .footer-grid{grid-template-columns:1fr;gap:26px} .footer-contact{grid-column:auto} .band-navy{padding:52px 0} .band-navy h2{font-size:26px} .quick-actions{right:12px;bottom:16px;gap:10px} .quick-action{width:46px;height:46px;border-width:2px} .quick-action svg{width:22px;height:22px} }
-    @media(min-width:981px){ .nav-hamburger{display:none} .nav-mobile-panel{display:none} }
+
+    /* ── Card show more button ── */
+    .card-show-more{display:none; align-items:center; gap:6px; font-size:12px; font-weight:800; color:var(--navy); background:#eef3fb; border:1px solid var(--line); border-radius:999px; padding:7px 14px; cursor:pointer; margin:0 0 12px; transition:all .2s ease; flex:0 0 auto; align-self:flex-start}
+    .card-show-more:hover{background:var(--navy); color:#fff}
+
+    /* ── DESKTOP NAV HIDE ── */
+    
+
+    /* ── MOBILE NAVIGATION - EXACTLY LIKE ABOUT US ── */
+    
+
+    /* ── MOBILE - CARDS FIXED SIZE + 3 HIGHLIGHTS ── */
+    @media(max-width:640px){
+      .internal-hero{padding:80px 0 48px;min-height:auto} 
+      .internal-hero h1{font-size:clamp(30px,8vw,48px)} 
+      .topbar{display:none} 
+      .nav{min-height:52px} 
+      .logo{min-width:0} .logo img{width:100px}
+      .nav .button{min-height:38px; padding:0 14px; font-size:13px; white-space:nowrap}
+      .topbar-inner,.nav,.wrap{width:100%;padding-left:20px;padding-right:20px}
+      .partnerships-section{padding:28px 0 20px} .why-section{padding:40px 0}
+      .gallery-outer{padding:0 16px; overflow:visible}
+      .gallery-viewport{padding:22px 8px 38px; overflow:hidden; margin:0; box-sizing:border-box}
+      .gallery-track{gap:16px; align-items:stretch; padding:0; justify-content:flex-start}
+
+      /* FIXED UNIFORM CARD SIZE - centered single card, soft shadow with space */
+      .gallery-card{flex:0 0 100%; width:100%; max-width:100%; height:495px; min-height:495px; max-height:495px; border-radius:16px; display:flex; flex-direction:column; box-shadow:0 10px 32px rgba(6,27,61,.10); border:1px solid rgba(6,27,61,.06); margin:0 auto}
+      .gallery-card.inactive{transform:scale(.92); opacity:0; visibility:hidden; pointer-events:none; filter:none; box-shadow:none}
+      .gallery-card.active{transform:scale(1); opacity:1; visibility:visible; box-shadow:0 18px 40px rgba(6,27,61,.14), 0 6px 16px rgba(6,27,61,.08); margin:0 auto}
+      .gallery-card.expanded-mobile{height:auto; min-height:495px; max-height:none; box-shadow:0 22px 48px rgba(6,27,61,.18)}
+
+      .card-top{padding:16px 14px 12px; flex:0 0 auto}
+      .card-top .eyebrow{font-size:10px; margin-bottom:6px}
+      .card-top h3{font-size:19px; line-height:1.2; margin-bottom:6px}
+      .card-top p.desc{font-size:12px; line-height:1.45; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; max-height:36px}
+      .card-icon{width:40px;height:40px; margin-bottom:10px; border-radius:8px} .card-icon img{width:22px;height:22px}
+
+      .card-body{padding:12px 14px 14px; flex:1; display:flex; flex-direction:column; overflow:hidden}
+      .h-label{font-size:10.5px; margin-bottom:10px}
+      
+      /* 3 highlights only */
+      .check-list{gap:7px; margin-bottom:8px; max-height:88px; overflow:hidden; position:relative; transition:max-height .32s ease; flex:0 0 auto}
+      .check-list.expanded{max-height:400px}
+      .check-list.collapsed::after{content:""; position:absolute; left:0; right:0; bottom:0; height:28px; background:linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,1)); pointer-events:none}
+      .check-item{font-size:11.8px; line-height:1.3}
+      .check-item .tick{width:18px;height:18px;font-size:9px; margin-top:0}
+
+      .card-show-more{display:inline-flex; margin-bottom:10px}
+      .divider{margin:10px 0}
+      .best-label{margin-bottom:6px; font-size:9.5px}
+      .pills{gap:5px; margin-bottom:10px}
+      .pill{font-size:10px; padding:4px 9px}
+      .cta-dark{min-height:40px; font-size:12.5px; border-radius:8px; margin-top:auto}
+
+      .arrow-btn{width:32px;height:32px;font-size:15px; box-shadow:0 6px 16px rgba(6,27,61,.16); z-index:12} 
+      .arrow-left{left:8px} .arrow-right{right:8px} 
+      /* 4 tabs visible at once - 2x2 grid */
+      .tabs-wrap{display:grid; grid-template-columns:1fr 1fr; gap:8px; padding:0; justify-content:stretch; overflow:visible; flex-wrap:wrap} 
+      .tabs-wrap::-webkit-scrollbar{display:none}
+      .partner-tab{font-size:11px; padding:0 10px; min-height:42px; white-space:normal; flex:0 0 auto; width:100%; justify-content:center; text-align:center; line-height:1.25; letter-spacing:0}
+      .dots{margin-top:8px}
+      .why-grid{grid-template-columns:1fr 1fr;gap:8px} 
+      .why-card{padding:12px 10px}
+      .footer-grid{grid-template-columns:1fr;gap:20px} .footer-contact{grid-column:auto}
+      .band-navy{padding:40px 0} .band-navy h2{font-size:22px}
+      .quick-actions{right:10px;bottom:14px;gap:8px} .quick-action{width:44px;height:44px;border-width:2px} .quick-action svg{width:20px;height:20px}
+    }
+
+    @media(max-width:380px){
+      .topbar-inner,.nav,.wrap{padding-left:16px;padding-right:16px}
+      .nav .button{display:none}
+      .gallery-card{flex:0 0 88vw; width:88vw; height:485px; min-height:485px; max-height:485px}
+    }
+  
+    /* ── DESKTOP NAV HIDE ── */
+    @media(min-width:981px){ .nav-hamburger{display:none !important} .nav-mobile-panel{display:none !important} }
+
+    /* ════════════════════════════════════════════════════════════════════════
+       MOBILE NAVIGATION  —  ≤ 980px
+       Standardized to match desktop menu: Home | About Us | Our Programs | Udaan Studio | Contact Us
+       ════════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .nav-links{display:none !important}
+      .nav-hamburger{
+        display:flex !important;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:5px;
+        width:44px;
+        height:44px;
+        padding:0;
+        background:none;
+        border:none;
+        cursor:pointer;
+        flex-shrink:0;
+        border-radius:var(--radius);
+        transition:background .18s ease;
+        margin-left:auto;
+      }
+      .nav-hamburger:hover{ background:rgba(6,27,61,.07); }
+      .nav-hamburger span{
+        display:block;
+        width:22px;
+        height:2px;
+        background:var(--navy);
+        border-radius:99px;
+        transition:transform .28s ease, opacity .2s ease, width .2s ease;
+        transform-origin:center;
+      }
+      .nav-open .nav-hamburger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+      .nav-open .nav-hamburger span:nth-child(2){ opacity:0; width:0; }
+      .nav-open .nav-hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+      .nav-mobile-panel{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:rgba(255,255,255,.98);
+        backdrop-filter:blur(18px);
+        border-bottom:1px solid var(--line);
+        box-shadow:0 18px 48px rgba(6,27,61,.14);
+        padding:0 0 22px;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-10px);
+        transition:opacity .24s ease, transform .24s ease;
+        z-index:99;
+      }
+      .nav-open .nav-mobile-panel{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .nav-mobile-panel a.nav-mobile-link{
+        display:block;
+        padding:13px 20px;
+        font-size:15px;
+        font-weight:800;
+        color:#263a5c;
+        border-bottom:1px solid var(--line);
+        transition:background .16s ease, color .16s ease;
+      }
+      .nav-mobile-panel a.nav-mobile-link:hover{ background:var(--light); color:var(--navy); }
+      .nav-mobile-panel .nav-mobile-cta{ padding:16px 20px 0; }
+      .nav-mobile-panel .nav-mobile-cta .button{
+        display:inline-flex;
+        width:100%;
+        justify-content:center;
+        border-bottom:none;
+      }
+    }
+
   </style>
-</head>
-<body>
+</head><body>
+  
   <div class="topbar">
     <div class="topbar-inner">
       <span>Admissions Open</span>
@@ -71,8 +229,11 @@
     </div>
   </div>
   <header class="site-header">
-    <nav class="nav">
-      <a class="logo" href="index.html#home"><img src="assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy logo"></a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a class="logo" href="index.html#home" aria-label="Udaan Abacus Academy">
+        <img src="assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy logo">
+      </a>
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-panel"><span></span><span></span><span></span></button>
       <div class="nav-links">
         <a href="index.html#home">Home</a>
         <a href="about.html">About Us</a>
@@ -80,20 +241,21 @@
         <a href="studio.html">Udaan Studio</a>
         <a href="index.html#contact">Contact Us</a>
       </div>
-      <div class="nav-cta">
+                  <div class="nav-mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+        <a href="index.html#home" class="nav-mobile-link">Home</a>
+        <a href="about.html" class="nav-mobile-link">About Us</a>
+        <a href="programs.html" class="nav-mobile-link">Our Programs</a>
+        <a href="studio.html" class="nav-mobile-link">Udaan Studio</a>
+        <a href="index.html#contact" class="nav-mobile-link">Contact Us</a>
+        <div class="nav-mobile-cta">
           <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
+        </div>
       </div>
-      <button class="nav-hamburger"><span></span><span></span><span></span></button>
-      <div class="nav-mobile-panel">
-        <a href="index.html#home">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="programs.html" class="active">Our Programs</a>
-        <a href="studio.html">Udaan Studio</a>
-        <a href="index.html#contact">Contact Us</a>
-        <div class="nav-mobile-cta"><a class="button outline" href="studio.html">Udaan Studio</a><a class="button dark" href="https://wa.me/918827773391" target="_blank">Book FREE Demo</a></div>
       </div>
+      <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
     </nav>
   </header>
+
   <main>
     <section class="internal-hero">
       <div class="wrap reveal"><p class="eyebrow">Our Programs</p><h1>Strategic <span>Partnerships</span></h1><p>Four distinct pathways for Schools, Parents, Entrepreneurs & Educators — one shared purpose: stronger thinking and learning.</p></div>
@@ -112,7 +274,7 @@
           <div class="gallery-viewport" id="galleryViewport"><div class="gallery-track" id="galleryTrack">
             <div class="gallery-card" data-real="0">
               <div class="card-top"><div class="card-icon"><img src="assets/icons/icon-school-partnership.png" alt="School Partnership Icon" onerror="this.style.display='none'"></div><p class="eyebrow">For Institutions</p><h3>School Partnership</h3><p class="desc">A value-added cognitive development programme that complements your curriculum with zero extra load on teachers.</p></div>
-              <div class="card-body"><div class="h-label">Partnership Highlights</div><div class="check-list"><div class="check-item"><span class="tick">✓</span> 33-Month structured programme</div><div class="check-item"><span class="tick">✓</span> Complete curriculum & teaching aids</div><div class="check-item"><span class="tick">✓</span> Classroom monitoring & audits</div><div class="check-item"><span class="tick">✓</span> Udaan Studio access</div><div class="check-item"><span class="tick">✓</span> Progress reports & academic support</div><div class="check-item"><span class="tick">✓</span> Certificates & recognition</div></div><hr class="divider"><span class="best-label">Best For</span><div class="pills"><span class="pill">Schools</span><span class="pill">Institutions</span><span class="pill">School Groups</span></div><a class="cta-dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Schedule a Meeting →</a></div>
+              <div class="card-body"><div class="h-label">Partnership Highlights</div><div class="check-list"><div class="check-item"><span class="tick">✓</span> 11 levels structured programme</div><div class="check-item"><span class="tick">✓</span> Free Instructor's Training*</div><div class="check-item"><span class="tick">✓</span> Complete curriculum & teaching aids</div><div class="check-item"><span class="tick">✓</span> Classroom monitoring & audits</div><div class="check-item"><span class="tick">✓</span> Udaan Studio access</div><div class="check-item"><span class="tick">✓</span> Progress reports & academic support</div><div class="check-item"><span class="tick">✓</span> Certificates & recognition</div></div><hr class="divider"><span class="best-label">Best For</span><div class="pills"><span class="pill">Schools</span><span class="pill">Institutions</span><span class="pill">School Groups</span></div><a class="cta-dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Schedule a Meeting →</a></div>
             </div>
             <div class="gallery-card" data-real="1">
               <div class="card-top"><div class="card-icon"><img src="assets/icons/icon-parent-partnership.png" alt="Parent Partnership Icon" onerror="this.style.display='none'"></div><p class="eyebrow">For Families • Most Chosen</p><h3>Parent Partnership</h3><p class="desc">A guided learning journey beyond classroom that builds confidence through live sessions and home practice.</p></div>
@@ -166,9 +328,17 @@
     document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.setProperty('--delay',`${Math.min(i%4,3)*80}ms`);revealObserver.observe(el)});
     (function(){
       const header=document.querySelector('.site-header');const hamburger=document.querySelector('.nav-hamburger');
-      if(header&&hamburger){const open=()=>{header.classList.add('nav-open')};const close=()=>{header.classList.remove('nav-open')};const toggle=()=>header.classList.contains('nav-open')?close():open();hamburger.addEventListener('click',e=>{e.stopPropagation();toggle()});document.querySelectorAll('.nav-mobile-panel a').forEach(l=>l.addEventListener('click',close));document.addEventListener('click',e=>{if(header.classList.contains('nav-open')&&!header.contains(e.target))close()})}
+      if(header&&hamburger){
+        const openMenu=()=>{header.classList.add('nav-open');hamburger.setAttribute('aria-expanded','true');};
+        const closeMenu=()=>{header.classList.remove('nav-open');hamburger.setAttribute('aria-expanded','false');};
+        const toggleMenu=()=>header.classList.contains('nav-open')?closeMenu():openMenu();
+        hamburger.addEventListener('click',e=>{e.stopPropagation();toggleMenu();});
+        document.querySelectorAll('.nav-mobile-panel a').forEach(l=>l.addEventListener('click',closeMenu));
+        document.addEventListener('click',e=>{if(header.classList.contains('nav-open')&&!header.contains(e.target))closeMenu()});
+        document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu()});
+      }
       const viewport=document.getElementById('galleryViewport');const track=document.getElementById('galleryTrack');if(!viewport||!track)return;const realCount=4;let currentReal=0;let centerDomIndex=1;let isAnimating=false;let cardW=0,gap=24,centerOffset=0;
-      function calcMetrics(){const first=track.children[0];if(!first)return;cardW=first.offsetWidth;gap=parseFloat(getComputedStyle(track).gap)||24;centerOffset=(viewport.clientWidth-cardW)/2}
+      function calcMetrics(){const first=track.children[0];if(!first)return;cardW=first.offsetWidth;gap=parseFloat(getComputedStyle(track).gap)||16;const vpInnerWidth = viewport.clientWidth - (parseFloat(getComputedStyle(viewport).paddingLeft)||0) - (parseFloat(getComputedStyle(viewport).paddingRight)||0); centerOffset=(viewport.clientWidth-cardW)/2;}
       function setTranslate(domIdx,animate){calcMetrics();if(animate){track.classList.add('animating')}else{track.classList.remove('animating')}const x=centerOffset-domIdx*(cardW+gap);track.style.transform='translateX('+x+'px)'}
       function updateActive(){const cards=[...track.children];cards.forEach((c,i)=>{c.classList.toggle('active',i===centerDomIndex);c.classList.toggle('inactive',i!==centerDomIndex)});document.querySelectorAll('.partner-tab').forEach(t=>{t.classList.toggle('active',parseInt(t.dataset.real)===currentReal)});document.querySelectorAll('.dot').forEach(d=>{d.classList.toggle('active',parseInt(d.dataset.real)===currentReal)})}
       function initOrder(){const cards=[...track.children];const order=[3,0,1,2];const frag=document.createDocumentFragment();order.forEach(i=>{if(cards[i])frag.appendChild(cards[i])});track.appendChild(frag);centerDomIndex=1;currentReal=0}
@@ -183,8 +353,100 @@
       viewport.addEventListener('pointerdown',e=>{if(e.target.closest('.cta-dark, .button, a')) return;if(isAnimating)return;dragging=true;viewport.setPointerCapture(e.pointerId);startX=e.clientX;startTX=getTX();track.classList.remove('animating')});
       viewport.addEventListener('pointermove',e=>{if(!dragging)return;dragDelta=e.clientX-startX;track.style.transform='translateX('+(startTX+dragDelta)+'px)'});
       viewport.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;track.classList.add('animating');if(Math.abs(dragDelta)>cardW*0.18){if(dragDelta<0)goNext();else goPrev()}else{setTranslate(centerDomIndex,true)}dragDelta=0});
+
+      // ── Mobile: Show 3 highlights + Show more ▼ / Show less ▲ - fixed uniform card size ──
+      function initCardClamp(){
+        const isMobile = window.innerWidth <= 640;
+        document.querySelectorAll('.gallery-card').forEach(card=>{
+          const list = card.querySelector('.check-list');
+          if(!list) return;
+          let btn = card.querySelector('.card-show-more');
+          if(!isMobile){
+            list.classList.remove('collapsed','expanded');
+            if(btn) btn.style.display='none';
+            card.classList.remove('expanded-mobile');
+            return;
+          }
+          // mobile
+          if(list.children.length <= 3){
+            if(btn) btn.style.display='none';
+            list.classList.remove('collapsed','expanded');
+            return;
+          }
+          if(!btn){
+            list.classList.add('collapsed');
+            btn = document.createElement('button');
+            btn.className='card-show-more';
+            btn.innerHTML='Show more <span>▼</span>';
+            btn.addEventListener('click', (e)=>{
+              e.stopPropagation();
+              const expanded = list.classList.contains('expanded');
+              if(expanded){
+                list.classList.remove('expanded');
+                list.classList.add('collapsed');
+                card.classList.remove('expanded-mobile');
+                btn.innerHTML='Show more <span>▼</span>';
+              } else {
+                list.classList.remove('collapsed');
+                list.classList.add('expanded');
+                card.classList.add('expanded-mobile');
+                btn.innerHTML='Show less <span>▲</span>';
+              }
+            });
+            list.insertAdjacentElement('afterend', btn);
+          } else {
+            btn.style.display='inline-flex';
+            if(!list.classList.contains('expanded')){
+              list.classList.add('collapsed');
+            }
+          }
+        });
+      }
+
+      initCardClamp();
+      window.addEventListener('resize', initCardClamp);
       viewport.addEventListener('pointercancel',()=>{dragging=false;track.classList.add('animating');setTranslate(centerDomIndex,true)});
     })();
   </script>
-</body>
-</html>
+  <script>
+// ── Mobile navigation ────────────────────────────────────────────────────
+    (function () {
+      const header   = document.querySelector('.site-header');
+      const hamburger = document.querySelector('.nav-hamburger');
+      if (!header || !hamburger) return;
+
+      function openMenu() {
+        header.classList.add('nav-open');
+        hamburger.setAttribute('aria-expanded', 'true');
+        hamburger.setAttribute('aria-label', 'Close navigation menu');
+      }
+      function closeMenu() {
+        header.classList.remove('nav-open');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.setAttribute('aria-label', 'Open navigation menu');
+      }
+      function toggleMenu() {
+        header.classList.contains('nav-open') ? closeMenu() : openMenu();
+      }
+
+      hamburger.addEventListener('click', function (e) {
+        e.stopPropagation();
+        toggleMenu();
+      });
+
+      document.querySelectorAll('.nav-mobile-link').forEach(function (link) {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', function (e) {
+        if (header.classList.contains('nav-open') && !header.contains(e.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    }());
+  </script>
+</body></html>

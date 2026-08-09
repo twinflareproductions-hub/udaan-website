@@ -408,45 +408,5 @@
       viewport.addEventListener('pointercancel',()=>{dragging=false;track.classList.add('animating');setTranslate(centerDomIndex,true)});
     })();
   </script>
-  <script>
-// ── Mobile navigation ────────────────────────────────────────────────────
-    (function () {
-      const header   = document.querySelector('.site-header');
-      const hamburger = document.querySelector('.nav-hamburger');
-      if (!header || !hamburger) return;
 
-      function openMenu() {
-        header.classList.add('nav-open');
-        hamburger.setAttribute('aria-expanded', 'true');
-        hamburger.setAttribute('aria-label', 'Close navigation menu');
-      }
-      function closeMenu() {
-        header.classList.remove('nav-open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        hamburger.setAttribute('aria-label', 'Open navigation menu');
-      }
-      function toggleMenu() {
-        header.classList.contains('nav-open') ? closeMenu() : openMenu();
-      }
-
-      hamburger.addEventListener('click', function (e) {
-        e.stopPropagation();
-        toggleMenu();
-      });
-
-      document.querySelectorAll('.nav-mobile-link').forEach(function (link) {
-        link.addEventListener('click', closeMenu);
-      });
-
-      document.addEventListener('click', function (e) {
-        if (header.classList.contains('nav-open') && !header.contains(e.target)) {
-          closeMenu();
-        }
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeMenu();
-      });
-    }());
-  </script>
 </body></html>

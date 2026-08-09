@@ -1391,6 +1391,32 @@
       .lead + a.button { margin-top: 20px; }
       .hero-actions { margin-top: 20px; }
       .section-head { margin-bottom: 28px; }
+
+      /* ── Three Pillars Mobile Fix ── */
+      .three-pillars-grid { grid-template-columns: 1fr !important; gap: 20px !important; }
+      .pillar-card { padding: 22px 16px !important; }
+      .pillar-card .pillar-connector { display: none !important; }
+      .pillar-card:not(:last-child)::after {
+        content: "▼";
+        position: absolute;
+        left: 50%;
+        bottom: -18px;
+        transform: translateX(-50%);
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--navy);
+        display: grid;
+        place-items: center;
+        font-size: 12px;
+        font-weight: 900;
+        z-index: 2;
+        box-shadow: 0 4px 12px rgba(6,27,61,.15);
+      }
+      .pillar-detail-content { margin-left: 0 !important; }
+      .pillar-detail-header { gap: 12px !important; }
+      .pillar-detail-header > div { min-width: 0; }
     }
 
     /* ── Extra small phones (≤ 380px) ── */
@@ -1407,98 +1433,158 @@
        MOBILE NAVIGATION  —  ≤ 980px
        Only adds the hamburger + drawer. Desktop nav is completely untouched.
        ════════════════════════════════════════════════════════════════════════ */
-    @media (max-width: 980px) {
-      /* Hamburger button */
-      .nav-hamburger {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 5px;
-        width: 44px;
-        height: 44px;
-        padding: 0;
-        background: none;
-        border: none;
-        cursor: pointer;
-        flex-shrink: 0;
-        border-radius: var(--radius);
-        transition: background .18s ease;
-        /* Sits to the RIGHT of the logo, before the (hidden) desktop links */
-        margin-left: auto;
-      }
-      .nav-hamburger:hover { background: rgba(6,27,61,.07); }
-      .nav-hamburger span {
-        display: block;
-        width: 22px;
-        height: 2px;
-        background: var(--navy);
-        border-radius: 99px;
-        transition: transform .28s ease, opacity .2s ease, width .2s ease;
-        transform-origin: center;
-      }
-      /* Animate to X when open */
-      .nav-open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-      .nav-open .nav-hamburger span:nth-child(2) { opacity: 0; width: 0; }
-      .nav-open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    
 
-      /* Mobile drawer panel */
-      .nav-mobile-panel {
-        position: absolute;
-        top: 100%;          /* flush below the sticky header */
-        left: 0;
-        right: 0;
-        background: rgba(255,255,255,.98);
-        backdrop-filter: blur(18px);
-        border-bottom: 1px solid var(--line);
-        box-shadow: 0 18px 48px rgba(6,27,61,.14);
-        padding: 0 0 22px;
-        /* Hidden state */
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(-10px);
-        transition: opacity .24s ease, transform .24s ease;
-        z-index: 99;
-      }
-      /* Open state */
-      .nav-open .nav-mobile-panel {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-      }
 
-      /* Links inside the drawer */
-      .nav-mobile-panel a {
-        display: block;
-        padding: 13px 20px;
-        font-size: 15px;
-        font-weight: 800;
-        color: #263a5c;
-        border-bottom: 1px solid var(--line);
-        transition: background .16s ease, color .16s ease;
-      }
-      .nav-mobile-panel a:hover {
-        background: var(--light);
-        color: var(--navy);
-      }
-      /* "Book FREE Demo" button row */
-      .nav-mobile-panel .nav-mobile-cta {
-        padding: 16px 20px 0;
-      }
-      .nav-mobile-panel .nav-mobile-cta .button {
-        display: inline-flex;
-        width: 100%;
-        justify-content: center;
-        padding: 0 22px;
-        border-bottom: none;
-      }
+    /* ── Three Pillars Base Styles (Desktop + Mobile) ── */
+    .three-pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .pillar-card {
+      text-align: center;
+      border-top: 4px solid var(--gold);
+      padding: 28px 22px;
+      position: relative;
+      overflow: visible;
+      background: var(--white);
+      border-left: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: 0 16px 42px rgba(6, 27, 61, .08);
+    }
+    .pillar-circle {
+      width: 62px;
+      height: 62px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      font-size: 20px;
+    }
+    .pillar-circle.navy { background: var(--navy); color: var(--gold-2); }
+    .pillar-circle.gold { background: var(--gold); color: var(--navy); }
+    .pillar-box {
+      background: var(--light);
+      border-radius: var(--radius);
+      padding: 14px;
+      border: 1px solid var(--line);
+    }
+    .pillar-box p {
+      margin: 0;
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 14px;
+      line-height: 1.4;
+    }
+    .pillar-connector {
+      margin: 14px auto 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      color: var(--gold);
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+    .pillar-connector span { color: var(--navy); margin: 0 6px; }
+    .pillar-detail-content { margin-left: 60px; }
+    .pillar-detail-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+    @media (max-width: 640px) {
+      .three-pillars-grid .pillar-card { margin-bottom: 22px; }
+      .three-pillars-grid .pillar-card:last-child { margin-bottom: 0; }
     }
 
     /* On desktop the panel and hamburger must never appear */
-    @media (min-width: 981px) {
-      .nav-hamburger { display: none; }
-      .nav-mobile-panel { display: none; }
+    
+  
+    /* ── DESKTOP NAV HIDE ── */
+    @media(min-width:981px){ .nav-hamburger{display:none !important} .nav-mobile-panel{display:none !important} }
+
+    /* ════════════════════════════════════════════════════════════════════════
+       MOBILE NAVIGATION  —  ≤ 980px
+       Standardized to match desktop menu: Home | About Us | Our Programs | Udaan Studio | Contact Us
+       ════════════════════════════════════════════════════════════════════════ */
+    @media (max-width: 980px) {
+      .nav-links{display:none !important}
+      .nav-hamburger{
+        display:flex !important;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        gap:5px;
+        width:44px;
+        height:44px;
+        padding:0;
+        background:none;
+        border:none;
+        cursor:pointer;
+        flex-shrink:0;
+        border-radius:var(--radius);
+        transition:background .18s ease;
+        margin-left:auto;
+      }
+      .nav-hamburger:hover{ background:rgba(6,27,61,.07); }
+      .nav-hamburger span{
+        display:block;
+        width:22px;
+        height:2px;
+        background:var(--navy);
+        border-radius:99px;
+        transition:transform .28s ease, opacity .2s ease, width .2s ease;
+        transform-origin:center;
+      }
+      .nav-open .nav-hamburger span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+      .nav-open .nav-hamburger span:nth-child(2){ opacity:0; width:0; }
+      .nav-open .nav-hamburger span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+      .nav-mobile-panel{
+        position:absolute;
+        top:100%;
+        left:0;
+        right:0;
+        background:rgba(255,255,255,.98);
+        backdrop-filter:blur(18px);
+        border-bottom:1px solid var(--line);
+        box-shadow:0 18px 48px rgba(6,27,61,.14);
+        padding:0 0 22px;
+        opacity:0;
+        pointer-events:none;
+        transform:translateY(-10px);
+        transition:opacity .24s ease, transform .24s ease;
+        z-index:99;
+      }
+      .nav-open .nav-mobile-panel{
+        opacity:1;
+        pointer-events:auto;
+        transform:translateY(0);
+      }
+      .nav-mobile-panel a.nav-mobile-link{
+        display:block;
+        padding:13px 20px;
+        font-size:15px;
+        font-weight:800;
+        color:#263a5c;
+        border-bottom:1px solid var(--line);
+        transition:background .16s ease, color .16s ease;
+      }
+      .nav-mobile-panel a.nav-mobile-link:hover{ background:var(--light); color:var(--navy); }
+      .nav-mobile-panel .nav-mobile-cta{ padding:16px 20px 0; }
+      .nav-mobile-panel .nav-mobile-cta .button{
+        display:inline-flex;
+        width:100%;
+        justify-content:center;
+        border-bottom:none;
+      }
     }
+
   </style>
   <!-- Meta Pixel Code -->
 <script>
@@ -1531,9 +1617,7 @@ src="https://www.facebook.com/tr?id=1510139910854964&ev=PageView&noscript=1"
       <a class="logo" href="index.html#home" aria-label="Udaan Abacus Academy">
         <img src="assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy logo">
       </a>
-      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-panel">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="nav-hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav-panel"><span></span><span></span><span></span></button>
       <div class="nav-links">
         <a href="index.html#home">Home</a>
         <a href="about.html">About Us</a>
@@ -1541,15 +1625,16 @@ src="https://www.facebook.com/tr?id=1510139910854964&ev=PageView&noscript=1"
         <a href="studio.html">Udaan Studio</a>
         <a href="index.html#contact">Contact Us</a>
       </div>
-      <div class="nav-mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
-        <a href="index.html#home">Home</a>
-        <a href="about.html">About Us</a>
-        <a href="programs.html" class="active">Our Programs</a>
-        <a href="studio.html">Udaan Studio</a>
-        <a href="index.html#contact">Contact Us</a>
+                  <div class="nav-mobile-panel" id="mobile-nav-panel" role="dialog" aria-label="Navigation menu">
+        <a href="index.html#home" class="nav-mobile-link">Home</a>
+        <a href="about.html" class="nav-mobile-link">About Us</a>
+        <a href="programs.html" class="nav-mobile-link">Our Programs</a>
+        <a href="studio.html" class="nav-mobile-link">Udaan Studio</a>
+        <a href="index.html#contact" class="nav-mobile-link">Contact Us</a>
         <div class="nav-mobile-cta">
           <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
         </div>
+      </div>
       </div>
       <a class="button dark" href="https://wa.me/918827773391" target="_blank" rel="noopener">Book FREE Demo</a>
     </nav>
@@ -1647,30 +1732,30 @@ src="https://www.facebook.com/tr?id=1510139910854964&ev=PageView&noscript=1"
         <div style="margin-top: 46px;">
           <h3 style="text-align: center; color: var(--navy); font-size: 18px; letter-spacing: 1.6px; text-transform: uppercase; margin-bottom: 28px; font-weight: 900;">The Three Pillars of IQ Elevation</h3>
           
-          <div class="info-grid" style="grid-template-columns: repeat(3, minmax(0, 1fr));">
-            <article class="info-box" style="text-align: center; border-top: 4px solid var(--gold); padding: 28px 22px;">
-              <div style="width: 62px; height: 62px; margin: 0 auto 18px; border-radius: 50%; background: var(--navy); color: var(--gold-2); display: grid; place-items: center; font-weight: 900; font-size: 20px;">01</div>
+          <div class="three-pillars-grid">
+            <article class="pillar-card">
+              <div class="pillar-circle navy">01</div>
               <h3 style="color: var(--navy); margin-bottom: 14px; font-size: 18px;">Working Memory</h3>
-              <div style="background: var(--light); border-radius: var(--radius); padding: 14px; border: 1px solid var(--line);">
-                <p style="margin: 0; color: var(--navy); font-weight: 800; font-size: 14px; line-height: 1.4;">Expands mental capacity from<br>7 to 16+ digits</p>
+              <div class="pillar-box">
+                <p>Expands mental capacity to<br>many digits at once</p>
               </div>
-              <div style="margin: 14px auto 0; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--gold); font-weight: 900;">━━━<span style="color: var(--navy);">▶</span>━━━</div>
+              <div class="pillar-connector">━━━<span>▶</span>━━━</div>
             </article>
-            <article class="info-box" style="text-align: center; border-top: 4px solid var(--gold); padding: 28px 22px;">
-              <div style="width: 62px; height: 62px; margin: 0 auto 18px; border-radius: 50%; background: var(--gold); color: var(--navy); display: grid; place-items: center; font-weight: 900; font-size: 20px;">02</div>
+            <article class="pillar-card">
+              <div class="pillar-circle gold">02</div>
               <h3 style="color: var(--navy); margin-bottom: 14px; font-size: 18px;">Processing Speed</h3>
-              <div style="background: var(--light); border-radius: var(--radius); padding: 14px; border: 1px solid var(--line);">
-                <p style="margin: 0; color: var(--navy); font-weight: 800; font-size: 14px; line-height: 1.4;">Insulates neural pathways with<br>speed & accuracy</p>
+              <div class="pillar-box">
+                <p>Insulates neural pathways with<br>speed & accuracy</p>
               </div>
-              <div style="margin: 14px auto 0; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--gold); font-weight: 900;">━━━<span style="color: var(--navy);">▶</span>━━━</div>
+              <div class="pillar-connector">━━━<span>▶</span>━━━</div>
             </article>
-            <article class="info-box" style="text-align: center; border-top: 4px solid var(--gold); padding: 28px 22px;">
-              <div style="width: 62px; height: 62px; margin: 0 auto 18px; border-radius: 50%; background: var(--navy); color: var(--gold-2); display: grid; place-items: center; font-weight: 900; font-size: 20px;">03</div>
+            <article class="pillar-card">
+              <div class="pillar-circle navy">03</div>
               <h3 style="color: var(--navy); margin-bottom: 14px; font-size: 18px;">Perceptual Reasoning</h3>
-              <div style="background: var(--light); border-radius: var(--radius); padding: 14px; border: 1px solid var(--line);">
-                <p style="margin: 0; color: var(--navy); font-weight: 800; font-size: 14px; line-height: 1.4;">Trains right-brain spatial translation<br>for pattern mastery</p>
+              <div class="pillar-box">
+                <p>Trains right-brain spatial translation<br>for pattern mastery</p>
               </div>
-              <div style="margin: 14px auto 0; display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--gold); font-weight: 900;">━━━<span style="color: var(--navy);">▶</span>━━━</div>
+              <div class="pillar-connector">━━━<span>▶</span>━━━</div>
             </article>
           </div>
         </div>
@@ -1680,42 +1765,42 @@ src="https://www.facebook.com/tr?id=1510139910854964&ev=PageView&noscript=1"
           
           <div style="display: grid; gap: 22px;">
             <div class="difference-card" style="padding: 30px; border-left: 5px solid var(--gold);">
-              <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px;">
+              <div class="pillar-detail-header">
                 <span style="min-width: 44px; min-height: 44px; border-radius: 50%; background: var(--navy); color: var(--gold-2); display: grid; place-items: center; font-weight: 900; font-size: 18px;">1</span>
                 <div>
                   <h3 style="margin: 0 0 4px; color: var(--navy); font-size: 20px;">Expanding Working Memory Capacity</h3>
                   <p style="margin: 0; color: var(--muted); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.6px;">Working Memory Index</p>
                 </div>
               </div>
-              <div style="margin-left: 60px;">
+              <div class="pillar-detail-content">
                 <p style="margin-bottom: 12px;"><strong>How IQ Measures It:</strong> <span style="color: var(--muted);">Working memory is your child's mental scratchpad—the number of items they can hold and process in their mind simultaneously.</span></p>
-                <p style="margin-bottom: 0;"><strong>How Abacus Upgrades It:</strong> <span style="color: var(--muted);">The average human memory limit holds 7 ± 2 digits at a time. By transforming abstract numbers into structured spatial bead patterns, Abacus Mental Computation (AMC) expands this boundary. Our students learn to effortlessly hold and manipulate 14 to 16 digits—both forward and backward—because they are reading a vivid mental map rather than reciting numbers.</span></p>
+                <p style="margin-bottom: 0;"><strong>How Abacus Upgrades It:</strong> <span style="color: var(--muted);">The average human memory can hold only a limited number of items at a time. By transforming abstract numbers into structured spatial bead patterns, Abacus Mental Computation (AMC) expands this boundary. Our students learn to effortlessly hold and manipulate many digits at once—both forward and backward—because they are reading a vivid mental map rather than reciting numbers.</span></p>
               </div>
             </div>
 
             <div class="difference-card" style="padding: 30px; border-left: 5px solid var(--navy);">
-              <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px;">
+              <div class="pillar-detail-header">
                 <span style="min-width: 44px; min-height: 44px; border-radius: 50%; background: var(--gold); color: var(--navy); display: grid; place-items: center; font-weight: 900; font-size: 18px;">2</span>
                 <div>
                   <h3 style="margin: 0 0 4px; color: var(--navy); font-size: 20px;">Accelerating Neural Processing Speed</h3>
                   <p style="margin: 0; color: var(--muted); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.6px;">Processing Speed Index</p>
                 </div>
               </div>
-              <div style="margin-left: 60px;">
+              <div class="pillar-detail-content">
                 <p style="margin-bottom: 12px;"><strong>How IQ Measures It:</strong> <span style="color: var(--muted);">Tracks how fast and accurately the brain decodes, evaluates, and responds to incoming visual data.</span></p>
                 <p style="margin-bottom: 0;"><strong>How Abacus Upgrades It:</strong> <span style="color: var(--muted);">High-frequency tactile training on the Soroban builds rapid automation. This repetitive, focused movement insulates the brain's neural highways between the visual cortex and motor cortex. The result? Calculation latency drops dramatically, allowing your child's brain to evaluate non-verbal data with remarkable speed and precision.</span></p>
               </div>
             </div>
 
             <div class="difference-card" style="padding: 30px; border-left: 5px solid var(--gold);">
-              <div style="display: flex; align-items: flex-start; gap: 16px; margin-bottom: 14px;">
+              <div class="pillar-detail-header">
                 <span style="min-width: 44px; min-height: 44px; border-radius: 50%; background: var(--navy); color: var(--gold-2); display: grid; place-items: center; font-weight: 900; font-size: 18px;">3</span>
                 <div>
                   <h3 style="margin: 0 0 4px; color: var(--navy); font-size: 20px;">Elevating Spatial & Visual Logic</h3>
                   <p style="margin: 0; color: var(--muted); font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.6px;">Perceptual Reasoning Index</p>
                 </div>
               </div>
-              <div style="margin-left: 60px;">
+              <div class="pillar-detail-content">
                 <p style="margin-bottom: 12px;"><strong>How IQ Measures It:</strong> <span style="color: var(--muted);">Tests a child's ability to analyze visual patterns, recognize complex relationships, and solve non-verbal problems fluidly.</span></p>
                 <p style="margin-bottom: 0;"><strong>How Abacus Upgrades It:</strong> <span style="color: var(--muted);">Transitioning to Anzan (Mental Abacus) forces the brain's right hemisphere to constantly practice spatial visualization. By rotating, moving, and reading imaginary beads in thin air, students become exceptionally skilled at pattern recognition, spatial translation, and structural problem-solving—the exact capabilities emphasized in global IQ assessments.</span></p>
               </div>
@@ -1892,19 +1977,16 @@ src="https://www.facebook.com/tr?id=1510139910854964&ev=PageView&noscript=1"
         toggleMenu();
       });
 
-      // Close when any link inside the panel is tapped
       document.querySelectorAll('.nav-mobile-link').forEach(function (link) {
         link.addEventListener('click', closeMenu);
       });
 
-      // Close on tap/click outside the header
       document.addEventListener('click', function (e) {
         if (header.classList.contains('nav-open') && !header.contains(e.target)) {
           closeMenu();
         }
       });
 
-      // Close on Escape key
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeMenu();
       });

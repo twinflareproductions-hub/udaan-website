@@ -1,4 +1,21 @@
+# Udaan Abacus - Verified Robots.txt
 User-agent: *
 Allow: /
+
+# Block junk extensions
+Disallow: /*.json$
+Disallow: /*.log$
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+# Allow rendering assets
+Allow: /assets/
+Allow: /*.css$
+Allow: /*.js$
+Allow: /*.png$
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.webp$
+Allow: /*.svg$
 
 Sitemap: https://udaanabacus.com/sitemap.xml

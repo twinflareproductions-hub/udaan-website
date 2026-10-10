@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Online Abacus Demo for Children 5–14 | Udaan Abacus Academy</title>
+<meta name="robots" content="noindex, follow">
+<meta name="description" content="Udaan Abacus Academy: live online abacus classes for children aged 5 to 14. Small batches, cameras on. Book a free 30-minute demo.">
+<style>
+:root{
+  --ivory:#FAF7F0; --paper:#fff; --ink:#0F1B33; --navy:#062B6F; --navy-d:#041c4a;
+  --gold:#B8962E; --gold-l:#E9D28A; --mute:#596277; --line:#E7E1D0;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --deva:"Noto Serif Devanagari","Noto Sans Devanagari","Nirmala UI","Mangal","Kohinoor Devanagari",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:var(--sans);color:var(--ink);background:var(--ivory);font-size:17px;line-height:1.6;padding-bottom:78px}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+a{color:inherit}
+
+/* top bar */
+.top{padding:10px 0;border-bottom:1px solid var(--line);background:#fff}
+.brandlink{display:flex;align-items:center;text-decoration:none}
+.logo{height:44px;width:auto;display:block}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.mark{white-space:nowrap;font-family:var(--serif);font-size:18px;letter-spacing:.12em;font-weight:700;color:var(--navy)}
+.mark i{font-style:normal;color:var(--gold)}
+.iso{text-align:right;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+
+/* hero */
+.hero{padding:42px 0 26px}
+.eyebrow{font-size:12.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:16px}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(32px,8.4vw,52px);line-height:1.1;color:var(--navy);margin-bottom:16px;letter-spacing:-.01em}
+.lede{font-size:18.5px;color:#34405a;max-width:34em;margin-bottom:26px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--navy);color:#fff;text-decoration:none;font-weight:600;font-size:17.5px;padding:17px 30px;border-radius:999px;box-shadow:0 10px 24px -10px rgba(6,43,111,.55);transition:transform .2s ease,box-shadow .2s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:0 14px 28px -10px rgba(6,43,111,.6)}
+.btn svg{width:18px;height:18px;transition:transform .25s}
+.btn:hover svg{transform:translateX(3px)}
+.btn.block{display:flex;width:100%}
+.micro{font-size:13.5px;color:var(--mute);margin-top:12px}
+
+/* abacus */
+.abacus-wrap{margin:34px 0 8px}
+.abacus-wrap svg{display:block;width:100%;height:auto;border-radius:16px;box-shadow:0 22px 40px -22px rgba(0,0,0,.55)}
+.cap{margin-top:14px;text-align:center;font-family:var(--serif);font-size:19px;color:var(--navy);min-height:30px}
+.cap .res{opacity:0;transition:opacity .6s;color:var(--gold);font-weight:700}
+.cap .res.on{opacity:1}
+.cap small{display:block;font-family:var(--sans);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-top:2px}
+
+/* trust strip */
+.trust{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0}
+.trust ul{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:14px 18px}
+.trust li{font-size:14px;line-height:1.35;color:#2b3652;padding-left:26px;position:relative}
+.trust li:before{content:"";position:absolute;left:0;top:3px;width:15px;height:15px;border-radius:50%;background:var(--gold-l);box-shadow:inset 0 0 0 4px var(--gold-l),inset 0 0 0 9px var(--gold)}
+.trust b{display:block;color:var(--navy);font-size:15px}
+
+section{padding:46px 0}
+h2{font-family:var(--serif);font-size:clamp(25px,6vw,33px);line-height:1.2;color:var(--navy);margin-bottom:12px;font-weight:700}
+.intro{color:#3a4560;margin-bottom:22px;max-width:36em}
+
+.cards{display:grid;gap:12px}
+.card{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card b{display:block;font-family:var(--serif);font-size:18.5px;color:var(--navy);margin-bottom:2px}
+.card p{color:#3a4560;font-size:16px}
+
+.methods{display:grid;gap:0;border-top:1px solid var(--line)}
+.m{display:grid;grid-template-columns:42px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid var(--line)}
+.m .n{font-family:var(--serif);font-size:26px;color:var(--gold);line-height:1}
+.m b{font-family:var(--serif);font-size:19px;color:var(--navy)}
+.m p{color:#3a4560;font-size:16px;margin-top:2px}
+.fine{font-size:13.5px;color:var(--mute);margin-top:16px}
+
+.steps{list-style:none;counter-reset:s;display:grid;gap:14px}
+.steps li{counter-increment:s;position:relative;padding-left:52px}
+.steps li:before{content:counter(s);position:absolute;left:0;top:0;width:36px;height:36px;border-radius:50%;border:1.5px solid var(--gold);color:var(--navy);display:grid;place-items:center;font-family:var(--serif);font-weight:700}
+.steps b{color:var(--navy)}
+figure{margin:26px 0 0}
+figure img{display:block;width:100%;height:auto;border-radius:14px;border:1px solid var(--line)}
+figcaption{font-size:13px;color:var(--mute);margin-top:8px}
+
+.founder{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.f-grid{display:grid;gap:22px;align-items:center}
+.f-photo{width:min(260px,70%);aspect-ratio:4/5;border-radius:18px;overflow:hidden;background:#EFE9D8;margin:0 auto}
+.f-photo img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block}
+blockquote{font-family:var(--serif);font-size:21px;line-height:1.45;color:var(--navy)}
+.who{margin-top:14px;font-size:15px;color:var(--mute)}
+.who b{display:block;color:var(--ink);font-size:16px}
+
+.rating{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.stars{color:#E0A800;letter-spacing:3px;font-size:22px}
+.rating b{font-family:var(--serif);font-size:30px;color:var(--navy)}
+.link{color:var(--navy);font-weight:600;text-underline-offset:4px}
+
+.fees{background:var(--navy);color:#fff;border-radius:20px;padding:30px 26px}
+.fees h2{color:var(--gold-l)}
+.fees .big{font-family:var(--serif);font-size:44px;line-height:1;font-weight:700}
+.fees .big small{font-size:17px;font-weight:400;color:#c9d5ef;font-family:var(--sans)}
+.fees p{color:#d4def3;margin-top:10px}
+
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-family:var(--serif);font-size:18.5px;color:var(--navy);list-style:none;display:flex;justify-content:space-between;gap:14px}
+summary::-webkit-details-marker{display:none}
+summary:after{content:"+";color:var(--gold);font-size:24px;line-height:1}
+details[open] summary:after{content:"–"}
+details p{margin-top:8px;color:#3a4560;font-size:16px}
+
+.final{text-align:center;padding:56px 0 30px}
+.final .btn{margin-top:8px}
+.wa{display:block;margin-top:16px;font-size:15px}
+.hindi{font-family:var(--deva);text-align:center;color:var(--navy);font-size:22px;padding:34px 0 8px;border-top:1px solid var(--line);margin-top:34px}
+footer{font-size:12.5px;color:var(--mute);text-align:center;padding:12px 22px 28px;line-height:1.7}
+
+.sticky{position:fixed;left:0;right:0;bottom:0;background:rgba(250,247,240,.96);backdrop-filter:blur(8px);border-top:1px solid var(--line);padding:11px 16px;z-index:20;transform:translateY(110%);transition:transform .35s ease}
+.sticky.on{transform:none}
+.sticky .btn{width:100%;padding:14px}
+
+.reviews{display:grid;gap:14px;margin-bottom:6px}
+.rev{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin:0}
+.rev blockquote{font-family:var(--sans);font-size:16px;line-height:1.6;color:#2b3652}
+.rev blockquote+blockquote{margin-top:10px}
+.rev figcaption{margin-top:14px;font-size:14px;color:var(--mute)}
+.rev figcaption b{color:var(--navy);margin-right:6px}
+.stars.sm{font-size:16px;margin-bottom:8px;letter-spacing:2px}
+@media (min-width:760px){.reviews{grid-template-columns:1fr 1fr}.rev:first-child{grid-column:1/-1}}
+
+.hdr-r{display:flex;align-items:center;gap:22px}
+.btn.sm{display:none;padding:11px 22px;font-size:15px;box-shadow:none}
+/* ---------- desktop ---------- */
+@media (min-width:1000px){
+ body{font-size:18px}
+ .wrap{max-width:1160px;padding:0 44px}
+ .top{padding:12px 0}.logo{height:54px}
+ .btn.sm{display:inline-flex}
+ .iso{font-size:12px}
+ .hero{padding:72px 0 64px}
+ .hero-grid{display:grid;grid-template-columns:1fr 1.02fr;gap:68px;align-items:center}
+ h1{font-size:58px;line-height:1.07}
+ .lede{font-size:20px}
+ .abacus-wrap{margin:0}
+ section{padding:84px 0}
+ h2{font-size:38px;margin-bottom:16px}
+ .intro{font-size:19px;margin-bottom:34px}
+ .trust{padding:30px 0}.trust li{font-size:15px}.trust b{font-size:17px}
+ .cards{grid-template-columns:repeat(3,1fr);gap:20px}
+ .card{padding:26px 26px 28px}.card b{font-size:21px;margin-bottom:6px}.card p{font-size:16.5px}
+ .methods{grid-template-columns:1fr 1fr;column-gap:64px}
+ .m{padding:22px 0}.m b{font-size:21px}
+ .steps{grid-template-columns:1fr 1fr;gap:26px 48px}
+ .steps li{padding-left:58px;font-size:17.5px}
+ .f-grid{grid-template-columns:340px 1fr;gap:70px}
+ blockquote{font-size:27px}
+ .reviews{grid-template-columns:repeat(3,1fr);gap:22px}
+ .rev:first-child{grid-column:auto}
+ .rev blockquote{font-size:15.5px}
+ .fees{padding:46px 52px;display:grid;grid-template-columns:1fr 1.4fr;gap:40px;align-items:center}
+ .fees h2{margin-bottom:6px}.fees .big{font-size:56px}
+ .fees p{margin-top:0;font-size:18px}
+ .faq{display:grid;grid-template-columns:1fr 1.5fr;gap:70px}
+ .final{padding:96px 0 40px}
+ .hindi{font-size:26px}
+}
+@media (min-width:1500px){.wrap{max-width:1240px}h1{font-size:62px}}
+
+/* booking section */
+.book{background:var(--paper);border-top:1px solid var(--line);scroll-margin-top:12px}
+.book .wrap{text-align:center}
+.book .intro{margin-left:auto;margin-right:auto}
+.cal-box{position:relative;min-height:560px;background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;text-align:left}
+.cal-loading{padding:60px 20px;text-align:center;color:var(--mute)}
+.cal-box:has(iframe) .cal-loading{display:none}
+.cal-fallback{margin-top:18px}.cal-fallback p{color:var(--mute);margin-bottom:12px}
+.booked{margin-top:18px;background:#EEF5EA;border:1px solid #BFD8B4;color:#1f4d1a;border-radius:12px;padding:16px 18px;text-align:left}
+@media (min-width:1000px){.cal-box{min-height:640px;max-width:980px;margin:0 auto}.book .intro{font-size:19px}}
+.sticky.hide{transform:translateY(110%)!important}
+/* reveal */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+@media (min-width:760px){
+ body{padding-bottom:0}.sticky{display:none}
+ .f-grid{grid-template-columns:240px 1fr;gap:38px}.f-photo{width:100%}
+ .trust ul{grid-template-columns:repeat(4,1fr)}
+}
+@media (max-width:440px){.iso{display:none}.mark{font-size:16px}}
+@media (prefers-reduced-motion:reduce){
+ .rv{opacity:1;transform:none;transition:none}.btn,.btn svg,.sticky{transition:none}html{scroll-behavior:auto}
+}
+</style>
+<!-- Meta Pixel Code (same Pixel as udaanabacus.com) -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1510139910854964');
+fbq('track','PageView');
+</script>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+<noscript><img height="1" width="1" style="display:none" alt="" src="https://www.facebook.com/tr?id=1510139910854964&ev=PageView&noscript=1"></noscript>
+
+<div class="top"><div class="wrap">
+  <a class="brandlink" href="https://udaanabacus.com/" aria-label="Udaan Abacus Academy">
+    <img class="logo" src="https://udaanabacus.com/assets/udaan-logo-full.jpeg" alt="Udaan Abacus Academy" height="44" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'mark',innerHTML:'UDAAN <i>ABACUS</i> ACADEMY'}))">
+  </a>
+  <div class="hdr-r"><div class="iso">ISO 9001:2015 Certified</div><a class="btn sm" href="#book" data-cta>Book a free demo</a></div>
+</div></div>
+
+<main>
+<div class="hero"><div class="wrap hero-grid">
+  <div class="hero-copy">
+  <div class="eyebrow">Live online classes · Ages 5 to 14</div>
+  <h1>Focus is a skill.<br>Come and see how it is built.</h1>
+  <p class="lede">Udaan Abacus Academy gives children a structured way to build concentration, visual memory and calm thinking, in small live classes with a teacher who sees every child.</p>
+  <a class="btn" href="#book" data-cta>Book a free demo
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <div class="micro">30 minutes on Zoom · Evening slots · Free, with no obligation</div>
+  </div>
+
+  <div class="abacus-wrap">
+    <svg id="abacus" viewBox="0 0 680 300" role="img" aria-label="A 17-rod soroban abacus. The beads slide to show 3,508 plus 4,297 equals 7,805."></svg>
+    <div class="cap"><span id="sum">3,508 + 4,297</span> <span class="res" id="res">= 7,805</span><small>Calculated on the beads, not a calculator</small></div>
+  </div>
+</div></div>
+
+<div class="trust"><div class="wrap"><ul>
+  <li><b>ISO 9001:2015</b>Certified academy</li>
+  <li><b>Up to 8 children</b>per online batch</li>
+  <li><b>Live teacher</b>Cameras on, never recorded</li>
+  <li><b>4.9 / 5</b>Parent rating on Google</li>
+</ul></div></div>
+
+<section><div class="wrap rv">
+  <h2>A class built around attention</h2>
+  <p class="intro">Children do not learn to concentrate from being told to. They learn by doing something that needs it, a little every day.</p>
+  <div class="cards">
+    <div class="card"><b>Live, in small groups</b><p>Your child learns with a teacher and a small batch in real time on Zoom, so mistakes are corrected on the spot.</p></div>
+    <div class="card"><b>Five days a week</b><p>Monday to Friday, 40 minutes a session. The activity changes through the class to keep young minds engaged.</p></div>
+    <div class="card"><b>Every child at their own pace</b><p>Everyone starts at Level 0 and moves up as they master each step. There is no race.</p></div>
+  </div>
+</div></section>
+
+<section style="background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)"><div class="wrap rv">
+  <h2>Five ways of working with numbers</h2>
+  <p class="intro">Fast calculation is the visible result. The real work is underneath, and each method trains something different.</p>
+  <div class="methods">
+    <div class="m"><div class="n">1</div><div><b>Abacus (Soroban)</b><p>Moving beads in the right order builds accuracy, precision and a feel for numbers.</p></div></div>
+    <div class="m"><div class="n">2</div><div><b>Finger Abacus</b><p>Showing numbers on the fingers as they are called out trains reaction time and coordination.</p></div></div>
+    <div class="m"><div class="n">3</div><div><b>Visual Abacus</b><p>With eyes closed, children picture the beads and calculate in the mind. This is the best studied part of mental abacus.</p></div></div>
+    <div class="m"><div class="n">4</div><div><b>Vision Abacus</b><p>With eyes open, children hold an imagined abacus steady in front of them. It builds sustained concentration.</p></div></div>
+    <div class="m"><div class="n">5</div><div><b>Screen Abacus</b><p>Numbers flash on screen and children learn to read them as whole patterns, quickly.</p></div></div>
+  </div>
+  <p class="fine">We do not promise a higher IQ, guaranteed marks or photographic memory. We teach skills through regular practice.</p>
+</div></section>
+
+<section><div class="wrap rv">
+  <h2>What happens in the free demo</h2>
+  <ol class="steps">
+    <li><b>Choose a slot.</b> Pick an evening time that suits your family.</li>
+    <li><b>Get your Zoom link</b> by email, with a reminder before the session.</li>
+    <li><b>Join for 30 minutes.</b> Your child tries the abacus with our teacher. You sit alongside.</li>
+    <li><b>Honest feedback.</b> We tell you how your child did, explain the fees clearly, and leave the decision to you.</li>
+  </ol>
+  <div style="margin-top:26px"><a class="btn" href="#book" data-cta>Choose a demo slot
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
+</div></section>
+
+<section class="founder"><div class="wrap rv"><div class="f-grid">
+  <div class="f-photo"><img src="https://udaanabacus.com/assets/founder.jpeg" alt="Sarthak Alya, Founder and CEO of Udaan Abacus Academy" width="520" height="650" loading="lazy"></div>
+  <div>
+    <div class="eyebrow">From our founder</div>
+    <blockquote>“Our commitment goes beyond teaching faster calculations. We focus on nurturing concentration, logical thinking, discipline and self-belief, skills that empower children throughout their academic journey and beyond.”</blockquote>
+    <div class="who"><b>Sarthak Alya</b>Founder &amp; CEO, Udaan Abacus Academy</div>
+  </div>
+</div></div></section>
+
+<section><div class="wrap rv">
+  <h2>What parents say</h2>
+  <div class="rating"><span class="stars" aria-hidden="true">★★★★★</span><b>4.9</b><span style="color:var(--mute)">on Google</span></div>
+  <div class="reviews">
+    <figure class="rev">
+      <div class="stars sm" aria-label="5 stars">★★★★★</div>
+      <blockquote>We are very happy with the online classes at Udaan Abacus Academy. The teaching methodology is excellent, effective, and easy to understand. The teachers explain every concept with great patience and clarity.</blockquote>
+      <blockquote>We have seen significant improvements in our son's calculation speed, concentration, and confidence. The online classes are also very organized and interactive.</blockquote>
+      <figcaption><b>Brijesh V.</b> Parent · Google review</figcaption>
+    </figure>
+    <figure class="rev">
+      <div class="stars sm" aria-label="5 stars">★★★★★</div>
+      <blockquote>It's been one month since enrolling my kid with this academy and she has already started showing the sign of increased focus and interest in studies. She is enjoying the classes and looks forward to attending them.</blockquote>
+      <figcaption><b>Sonu J.</b> Parent · Google review</figcaption>
+    </figure>
+    <figure class="rev">
+      <div class="stars sm" aria-label="5 stars">★★★★★</div>
+      <blockquote>We are very happy with Shravya's Abacus classes. She is enjoying the sessions and learning to calculate faster with better focus and concentration. The teaching is simple, friendly, and easy for children to understand. We are happy to see her progress and would definitely recommend these classes to other parents.</blockquote>
+      <figcaption><b>Asha C.</b> Parent · Google review</figcaption>
+    </figure>
+  </div>
+  <p class="fine">Parents' own words from Google. Every child's experience is different, and we do not guarantee results.</p>
+  <p style="margin-top:12px"><a class="link" href="https://share.google/eCRR1U7TepoIISxqE" target="_blank" rel="noopener">Read all our reviews on Google →</a></p>
+</div></section>
+
+<section style="padding-top:10px"><div class="wrap rv">
+  <div class="fees">
+    <div><h2>Fees, stated plainly</h2>
+    <div class="big">₹1,500 <small>per month</small></div></div>
+    <p>Online classes for India. A one-time onboarding fee of ₹1,100 applies. The demo is free, and we explain every fee before you decide.</p>
+  </div>
+</div></section>
+
+<section><div class="wrap rv faq">
+  <div><h2>Questions parents ask</h2><p class="intro">Straight answers, before you book.</p></div>
+  <div>
+  <details><summary>Does my child need to be good at maths?</summary><p>No. Abacus is designed for every child, and no special maths ability is needed to begin.</p></details>
+  <details><summary>How is attention kept up in an online class?</summary><p>Batches are small, cameras stay on, and the teacher corrects errors live. The activity changes through the 40-minute session so children stay involved.</p></details>
+  <details><summary>Will it add to my child's homework load?</summary><p>No. Most practice happens in class, not as heavy homework.</p></details>
+  <details><summary>Do you guarantee results?</summary><p>No, and nobody honestly can. Progress depends on regular practice. The demo lets you see how your child responds before you decide.</p></details>
+  <details><summary>What happens after the demo?</summary><p>You receive a short summary of how your child did and the next step if you wish to continue. There is no pressure and no obligation.</p></details>
+  </div>
+</div></section>
+
+<section id="book" class="book"><div class="wrap rv">
+  <h2>Choose a time for your free demo</h2>
+  <p class="intro">One 30-minute session on Zoom is the easiest way to know if Udaan Abacus Academy is right for your child. Pick a slot below. You will get the Zoom link by email.</p>
+  <div id="cal-embed" class="cal-box"><p class="cal-loading">Loading the calendar…</p></div>
+  <div id="cal-fallback" class="cal-fallback" hidden>
+    <p>The calendar is taking a moment to load.</p>
+    <a class="btn" href="https://cal.com/udaanabacus/demo" target="_blank" rel="noopener" data-fallback>Open the booking calendar</a>
+  </div>
+  <div id="booked" class="booked" hidden role="status">
+    <b>Your demo is booked.</b> Please check your email for the Zoom link. Please sit alongside your child and keep the camera on.
+  </div>
+  <a class="wa link" href="https://wa.me/918827773391?text=Hello%2C%20I%20would%20like%20to%20know%20more%20about%20the%20free%20demo%20at%20Udaan%20Abacus%20Academy.">Prefer WhatsApp? Message us</a>
+  <div class="hindi" lang="hi">Udaan Abacus Academy: तैयारी एक बेहतर भविष्य की।</div>
+</div></section>
+</main>
+
+<footer>
+  Udaan Abacus Academy is run by Udaan Abacus Private Limited<br>917, Tower Square, Khatiwala Tank, Indore, Madhya Pradesh 452014<br>
+  <a href="https://udaanabacus.com/privacy-policy.html">Privacy Policy</a> · <a href="https://udaanabacus.com/refund-policy.html">Refund Policy</a> · <a href="https://udaanabacus.com/terms-and-conditions.html">Terms</a> · <a href="https://udaanabacus.com/">udaanabacus.com</a>
+</footer>
+
+<div class="sticky" id="sticky"><a class="btn block" href="#book" data-cta>Book a free demo</a></div>
+
+<script>
+(function(){
+  /* ---------- scroll reveal + sticky CTA ---------- */
+  var rv=document.querySelectorAll('.rv');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    rv.forEach(function(el){io.observe(el)});
+  } else rv.forEach(function(el){el.classList.add('in')});
+  var st=document.getElementById('sticky');
+  function sc(){st.classList.toggle('on',window.scrollY>520)}
+  window.addEventListener('scroll',sc,{passive:true});sc();
+
+
+  /* ---------- tracking helpers (Meta Pixel is loaded in the head) ---------- */
+  var qs=new URLSearchParams(location.search);
+  var adKey=(qs.get('ad')||'direct').toLowerCase().replace(/[^a-z0-9_-]/g,'').slice(0,30)||'direct';
+  function track(){ try{ if(window.fbq){ fbq.apply(null,arguments); } }catch(e){} }
+
+  /* every "Book" button scrolls to the calendar and records a click */
+  document.querySelectorAll('[data-cta]').forEach(function(a){
+    a.addEventListener('click',function(){ track('trackCustom','BookDemoClick',{ad:adKey}); loadCal(); });
+  });
+  var fb=document.querySelector('[data-fallback]');
+  if(fb) fb.addEventListener('click',function(){ track('trackCustom','BookDemoFallbackClick',{ad:adKey}); });
+
+  /* hide the sticky button while the calendar is on screen */
+  var bookEl=document.getElementById('book');
+  if('IntersectionObserver' in window && bookEl){
+    new IntersectionObserver(function(es){ st.classList.toggle('hide',es[0].isIntersecting); },{threshold:.15}).observe(bookEl);
+  }
+
+  /* ---------- Cal.com inline calendar (free embed, loaded only when needed) ---------- */
+  var CAL_USER='udaanabacus';
+  /* After you create 'demo-focus' and 'demo-sit' in Cal.com, change the two values below. */
+  var CAL_EVENT_BY_AD={focus:'demo',sit:'demo'};
+  var calLink=CAL_USER+'/'+(CAL_EVENT_BY_AD[adKey]||'demo');
+  var calStarted=false, booked=false;
+
+  function onBooked(){
+    if(booked) return; booked=true;
+    track('track','Schedule',{content_name:'Free Abacus Demo',content_category:adKey});
+    var m=document.getElementById('booked'); if(m) m.hidden=false;
+  }
+  window.__udaanOnBooked=onBooked;
+
+  function loadCal(){
+    if(calStarted) return; calStarted=true;
+    (function(C,A,L){var p=function(a,ar){a.q.push(ar)};var d=C.document;C.Cal=C.Cal||function(){var cal=C.Cal;var ar=arguments;if(!cal.loaded){cal.ns={};cal.q=cal.q||[];d.head.appendChild(d.createElement("script")).src=A;cal.loaded=true}if(ar[0]===L){var api=function(){p(api,arguments)};var namespace=ar[1];api.q=api.q||[];if(typeof namespace==="string"){cal.ns[namespace]=cal.ns[namespace]||api;p(cal.ns[namespace],ar);p(cal,["initNamespace",namespace])}else p(cal,ar);return}p(cal,ar)}})(window,"https://app.cal.com/embed/embed.js","init");
+    Cal("init",{origin:"https://app.cal.com"});
+    Cal("inline",{elementOrSelector:"#cal-embed",calLink:calLink,layout:"month_view",config:{layout:"month_view",theme:"light"}});
+    Cal("ui",{theme:"light",styles:{branding:{brandColor:"#062B6F"}},hideEventTypeDetails:false,layout:"month_view"});
+    Cal("on",{action:"bookingSuccessfulV2",callback:onBooked});
+    Cal("on",{action:"bookingSuccessful",callback:onBooked});
+    /* if the calendar has not appeared after 8 seconds, show a plain link instead */
+    setTimeout(function(){
+      var box=document.getElementById('cal-embed');
+      if(box && !box.querySelector('iframe')){ var f=document.getElementById('cal-fallback'); if(f) f.hidden=false; }
+    },8000);
+  }
+  if('IntersectionObserver' in window && bookEl){
+    var cio=new IntersectionObserver(function(es){ if(es[0].isIntersecting){ loadCal(); cio.disconnect(); } },{rootMargin:'700px 0px'});
+    cio.observe(bookEl);
+  } else { window.addEventListener('load',loadCal); }
+
+  /* ---------- soroban: 17 rods, 1 upper + 4 lower beads each ---------- */
+  var NS='http://www.w3.org/2000/svg', svg=document.getElementById('abacus');
+  var RODS=17, UNIT=9, X0=40, DX=37.5, BEAM_Y=98, BEAM_H=14;
+  function el(n,a,p){var e=document.createElementNS(NS,n);for(var k in a)e.setAttribute(k,a[k]);(p||svg).appendChild(e);return e}
+  var defs=el('defs',{});
+  var g=el('linearGradient',{id:'bg',x1:0,y1:0,x2:0,y2:1},defs);
+  el('stop',{offset:'0','stop-color':'#FFE46B'},g);el('stop',{offset:'.55','stop-color':'#F4C20D'},g);el('stop',{offset:'1','stop-color':'#C99A00'},g);
+  el('rect',{x:0,y:0,width:680,height:300,rx:16,fill:'#0b0b0b'});
+  el('rect',{x:14,y:14,width:652,height:272,rx:6,fill:'#171717'});
+  var rods=[];
+  for(var r=1;r<=RODS;r++){
+    var x=X0+(r-1)*DX;
+    el('line',{x1:x,y1:14,x2:x,y2:286,stroke:'#8d8d8d','stroke-width':2.4});
+  }
+  el('rect',{x:14,y:BEAM_Y,width:652,height:BEAM_H,fill:'#050505'});
+  el('rect',{x:14,y:BEAM_Y,width:652,height:2,fill:'#2a2a2a'});
+  [3,6,9,12,15].forEach(function(r){
+    el('circle',{cx:X0+(r-1)*DX,cy:BEAM_Y+BEAM_H/2,r:r===UNIT?4.6:3,fill:r===UNIT?'#F4C20D':'#e9e9e9'});
+  });
+  var PATH='M-17,0 L-10,-11 L10,-11 L17,0 L10,11 L-10,11 Z';
+  function bead(x,y){var gx=el('g',{transform:'translate('+x+',0)'});var b=el('path',{d:PATH,fill:'url(#bg)',stroke:'#7a5a00','stroke-width':.8},gx);b.style.transform='translateY('+y+'px)';b.style.transition='transform 1s cubic-bezier(.22,.8,.25,1)';return b}
+  for(var r=1;r<=RODS;r++){
+    var x=X0+(r-1)*DX, o={up:bead(x,30),low:[]};
+    for(var i=0;i<4;i++) o.low.push(bead(x,190+24*i));
+    rods.push(o);
+  }
+  function setNumber(n){
+    for(var r=1;r<=RODS;r++){
+      var d=0; if(r<=UNIT){d=Math.floor(n/Math.pow(10,UNIT-r))%10}
+      var o=rods[r-1], five=d>=5, low=d%5, delay=(r<=UNIT?(UNIT-r):0)*45+'ms';
+      o.up.style.transitionDelay=delay; o.up.style.transform='translateY('+(five?86:30)+'px)';
+      for(var i=0;i<4;i++){o.low[i].style.transitionDelay=delay;o.low[i].style.transform='translateY('+(i<low?(126+24*i):(190+24*i))+'px)'}
+    }
+  }
+  var sum=document.getElementById('sum'),res=document.getElementById('res');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce){setNumber(7805);res.classList.add('on');return}
+  setNumber(0);
+  function run(){
+    res.classList.remove('on');
+    setTimeout(function(){setNumber(3508)},700);
+    setTimeout(function(){setNumber(7805)},4200);
+    setTimeout(function(){res.classList.add('on')},5400);
+    setTimeout(function(){setNumber(0)},10800);
+    setTimeout(run,12600);
+  }
+  run();
+})();
+</script>
+</body>
+</html>
